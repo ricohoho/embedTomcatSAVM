@@ -20,7 +20,8 @@
             <legend>Qui êtes-vous ?</legend>
 
             <p>Les champs marqués de l'astérisque rouge sont obligatoires.</p>
-            <p class="margel">
+            <p >
+            	<label class="label" for="civilite">Civilité<span class="obligatoire">*</span></label>
                 <input type="radio" value="Madame" id="md" name="CIVIL"  required="required">
                 <label for="md">Madame</label>
                 <input type="radio" value="Monsieur" id="ms" name="CIVIL"  required="required">
@@ -30,6 +31,7 @@
             <p>
                 <label class="label" for="contact_nom">Nom<span class="obligatoire">*</span></label>
                 <input type="text" id="contact_nom" name="NOM" required>
+                <label class="label" for="contact_nom">(utilisé dans le catalogue)</label>
             </p>
 
             <p>
@@ -54,20 +56,20 @@
         <fieldset>
             <legend>Où habitez-vous ?</legend>
             <p>
-                <label class="label" for="num">Numéro de rue</label>
-                <input id="num" type="text" name="ADR_NUM" size="4" required>
+                <label class="label" for="num">Numéro de rue<span class="obligatoire">*</span></label>
+                <input id="num" type="text" name="ADR_NUM" size="4"  pattern="[0-9]*" required>
             </p>
             <p>
-                <label class="label" for="rue">Nom de rue</label>
+                <label class="label" for="rue">Nom de rue<span class="obligatoire">*</span></label>
                 <input id="rue" type="text" size="40" name="ADR_RUE" maxlength="150" required>
             </p>
             <p>
-                <label class="label" for="cp">Code postal</label>
+                <label class="label" for="cp">Code postal<span class="obligatoire">*</span></label>
                 <input id="cp" type="text" maxlength="5" name="ADR_CODE_POSTAL" size="10" placeholder="5 chiffres" pattern="[0-9]{5}" title="nombre à 5 chiffres" required>                
             </p>
             
             <p>
-                <label class="label" for="ville">Ville</label>
+                <label class="label" for="ville">Ville<span class="obligatoire">*</span></label>
                 <input id="cp" type="text" maxlength="30" name="ADR_VILLE" size="10" placeholder="ville"  title="ville" required>                
             </p>
         </fieldset>
@@ -75,14 +77,14 @@
         <br>
         <br>
         <fieldset>
-            <legend>Quelques informations sur l'oeuvre...</legend>
+            <legend>Quelques informations sur l'oeuvre (Une seule oeuvre sera présentée)</legend>
             <p>
-                <label class="label" for="Titre">Titre de l'oeuvre</label>
+                <label class="label" for="Titre">Titre de l'oeuvre<span class="obligatoire">*</span></label>
                 <input id="OEUVRE_TITRE" type="text" size="40" name="OEUVRE_TITRE" required>
             </p>
             
              <p>
-                <label for="selectniveau" class="label">Type d'oeuvre</label>
+                <label for="selectniveau" class="label">Type d'oeuvre<span class="obligatoire">*</span></label>
                 <select id="selectniveau" name="OEUVRE_TYPE" required>
                     <option value="0">-- Sélectionnez votre type d'oeuvre --</option>
                     <option value="Sculpture">Sculpture</option>
@@ -97,23 +99,24 @@
                 <textarea id="OEUVRE_DETAIL" rows="5" cols="60" placeholder="Detail technique"  name="OEUVRE_DETAIL"></textarea>
             </p>
                 <p>
-                    <label class="Dimensions" for="Dimensions">Dimensions Hauteur : </label>
-                    <input id="Dimensions" type="number" maxlength="5" size="5" placeholder="Cm" pattern="[0-9]{5}" title="Dimensions" name=DIMENSIONY required>
+                    <label class="Dimensions" for="Dimensions">Dimensions Hauteur : <span class="obligatoire">*</span></label>
+                    <input  type="text" maxlength="4" size="4" placeholder="Cm" pattern="[0-9]*" title="Dimensions" name=DIMENSIONY required>
                 
-                    <label class="Dimensions" for="Dimensions">x Largeur : </label>
-                    <input id="Dimensions" type="number" maxlength="5" size="5" placeholder="Cm" pattern="[0-9]{5}" title="Dimensions"  name=DIMENSIONX required>                                        
+                    <label class="Dimensions" for="Dimensions">x Largeur : <span class="obligatoire">*</span></label>
+                    <input id="Dimensions" type="text" maxlength="4" size="4" placeholder="Cm" pattern="[0-9]*" title="Dimensions"  name=DIMENSIONX required>                                        
                     
                 </p>
                 <P>
-                	<label class="Dimensions" for="Dimensions">Image de l'oeuvre</label>
+                	<label class="Dimensions" for="Dimensions">Image de l'oeuvre<span class="obligatoire">*</span></label>                	
                     <input type = "file" name = "file" size = "50" required/>
+                    <br><label class="Dimensions" for="Dimensions">(La qualité de l'image doit être suffisante pour le catalogue : taille supérieure à 1 Mo)</label>
                 </P>
             <p>
-                <label class="label" for="prix">Prix de vente</label>
+                <label class="label" for="prix">Prix de vente<span class="obligatoire">*</span></label>
                 <input id="prix" type="number" maxlength="5" size="5" placeholder="Euros" pattern="[0-9]{5}" title="Dimensions" name="OEUVRE_PRIX" required> 
             </p>
             <p>
-                <label class="label" for="siret">Numéro de siret</label>
+                <label class="label" for="siret">Numéro de siret<span class="obligatoire">*</span></label>
                 <input id="site" type="text" maxlength="5" size="10" placeholder="siret" pattern="[0-9]{5}" title="Dimensions" name="SIRET_MDA" required>
             </p>
             <p class="margel">Disponibilités pour les gardes
@@ -138,7 +141,7 @@
              L'inscription sera définitive après avoir reçu le paiement en deux chèques (se reporter au règlement pour participation selon le format) à envoyer par courrier "SAVM 5 ter avenue du bac 94210 la Varenne saint-hilaire" avec enveloppe de retour.
             </p>
             <p>                
-                <input id="REGLE_ADHESION" type="checkbox"  title="Règles d'adhésion" NAME="REGLE_ADHESION" required>J'ai lu, compris et accepté <A href="reglementsSAVM.pdf" target="Reglements SAVM">les règles d'adhésion</A>
+                <input id="REGLE_ADHESION" type="checkbox"  title="Règles d'adhésion" NAME="REGLE_ADHESION" required>J'ai lu, compris et accepté <span class="obligatoire">*</span><A href="reglementsSAVM.pdf" target="Reglements SAVM">les règles d'adhésion</A>
             </p>
             
             
