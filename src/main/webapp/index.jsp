@@ -6,7 +6,7 @@
     <title>INSCRIPTION SALON SAVM 2020</title>
     <link rel="stylesheet" href="styles1.css">
 </head>
-
+ <!-- Verson du 05.03 -->
 <body>
 	<div class="img-container"> <!-- Block parent element -->
 		<img src=banniereSAVM.jpg width=600px align=hcenter>
