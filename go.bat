@@ -1,0 +1,1 @@
+java -jar target\embeddedTomcat-jar-with-dependencies.jar

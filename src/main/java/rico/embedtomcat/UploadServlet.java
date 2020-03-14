@@ -35,7 +35,9 @@ public class UploadServlet extends HttpServlet {
 	private boolean isMultipart;
 	private String filePath;
 	private int maxFileSize = 5 * 1024 * 1024;
+	private int minFileSize = 1 * 1024 * 1024;
 	private int maxMemSize = 1024 * 1024;
+	long sizeInBytes = 0;
 	private File file ;
 	   
 	 @Override
@@ -131,19 +133,23 @@ public class UploadServlet extends HttpServlet {
                   String fileName = fi.getName();
                   String contentType = fi.getContentType();
                   boolean isInMemory = fi.isInMemory();
-                  long sizeInBytes = fi.getSize();
+                  sizeInBytes = fi.getSize();
                   String fileNameID="";
                
                   System.out.println("isInMemory/sizeInBytes="+isInMemory+"/"+sizeInBytes);
+                  sizeInBytes = sizeInBytes;
                   
-                  // Write the file
-                  if( fileName.lastIndexOf("\\") >= 0 ) {
-                	  fileNameID=  idPost+"_" + fileName.substring( fileName.lastIndexOf("\\"));                     
-                  } else {
-                	  fileNameID= idPost+"_" + fileName.substring(fileName.lastIndexOf("\\")+1);
+                  //Ecriture du fichier photo si > 1 Mo
+                  if ( sizeInBytes>=minFileSize) {       
+                	  // Write the file
+                	  if( fileName.lastIndexOf("\\") >= 0 ) {
+                		  fileNameID=  idPost+"_" + fileName.substring( fileName.lastIndexOf("\\"));                     
+                	  } else {
+                		  fileNameID= idPost+"_" + fileName.substring(fileName.lastIndexOf("\\")+1);
+                	  }
+                	  file = new File(filePath+ fileNameID) ;
+                	  fi.write( file ) ;
                   }
-                  file = new File(filePath+ fileNameID) ;
-                  fi.write( file ) ;
                   //out.println("Uploaded Filename: " + fileNameID + "<br>");
                   llRow.add("PHOTO");
                   
@@ -180,6 +186,21 @@ public class UploadServlet extends HttpServlet {
                    //out.println("PAram : "+name +"="+ value+ "<br>");                                                         
                }
             }
+            
+            
+            //Si taille < 1mo : Inscription refusé 
+            if ( sizeInBytes<minFileSize) {            	
+                 out.println("<br><br><p>");
+                 out.println("<label class=''>"); 
+                 out.println("Votre image n'a pas une définition suffisante (la taille du fichier image doit etre supèrieure à 1 Mo), <BR><B>votre  inscription n'a pas été pris en compte<B>"); 
+                 out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
+                 out.println("<label>");
+                 out.println("<p>");
+                 out.println("</body>");
+                 out.println("</html>");
+                 return;
+            }
+            
             
             out.println("<p>");
             out.println("<label class='label' >"+paramPrenom +" "+ paramNom+"</label><br>");

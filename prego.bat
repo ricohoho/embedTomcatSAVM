@@ -1,0 +1,1 @@
+"D:\DATA\e.fassel\apache-maven-3.6.3\bin\mvn.cmd" clean compile assembly:single

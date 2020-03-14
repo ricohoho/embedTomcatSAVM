@@ -91,6 +91,7 @@
                     <option value="Peinture">Peinture</option>
                     <option value="Dessin">Dessin</option>
                     <option value="Gravure">Gravure</option>
+                    <option value="Autres">Autres</option>
                 </select>
             </p>
             
@@ -117,7 +118,7 @@
             </p>
             <p>
                 <label class="label" for="siret">Numéro de siret<span class="obligatoire">*</span></label>
-                <input id="site" type="text" maxlength="5" size="10" placeholder="siret" pattern="[0-9]{5}" title="Dimensions" name="SIRET_MDA" required>
+                <input id="site" type="text" maxlength="14" size="14" placeholder="siret (14 Chifres)" pattern="[0-9]{14}" title="Dimensions" name="SIRET_MDA" required>
             </p>
             <p class="margel">Disponibilités pour les gardes
                 <input type="radio" value="oui" id="md1" name="DISPO_GARDE" >
@@ -141,7 +142,7 @@
              L'inscription sera définitive après avoir reçu le paiement en deux chèques (se reporter au règlement pour participation selon le format) à envoyer par courrier "SAVM 5 ter avenue du bac 94210 la Varenne saint-hilaire" avec enveloppe de retour.
             </p>
             <p>                
-                <input id="REGLE_ADHESION" type="checkbox"  title="Règles d'adhésion" NAME="REGLE_ADHESION" required>J'ai lu, compris et accepté <span class="obligatoire">*</span><A href="reglementsSAVM.pdf" target="Reglements SAVM">les règles d'adhésion</A>
+                <input id="REGLE_ADHESION" type="checkbox"  onclick='javascript:regles()'  title="Règles d'adhésion" NAME="REGLE_ADHESION" required>J'ai lu, compris et accepté <span class="obligatoire">*</span><A href="reglementsSAVM.pdf" target="Reglements SAVM">les règles d'adhésion</A>
             </p>
             
             
@@ -155,4 +156,12 @@
 
 </body>
 
+<script>
+function regles() {
+	var strWindowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes";
+	 windowObjectReference = window.open("reglementsSAVM.pdf", "Reglement SAVM 2020", strWindowFeatures);
+	
+	
+}
+</script>
 </html>
