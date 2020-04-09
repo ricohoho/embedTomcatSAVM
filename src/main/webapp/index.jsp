@@ -56,8 +56,8 @@
         <fieldset>
             <legend>Où habitez-vous ?</legend>
             <p>
-                <label class="label" for="num">Numéro de rue<span class="obligatoire">*</span></label>
-                <input id="num" type="text" name="ADR_NUM" size="4"  pattern="[0-9]*" required>
+                <label class="label" for="num">Numéro de rue <span class="obligatoire">*</span></label>
+                <input id="num" type="text" name="ADR_NUM" size="10"  title="nuléro : 33 Bis par exemple" required>
             </p>
             <p>
                 <label class="label" for="rue">Nom de rue<span class="obligatoire">*</span></label>
@@ -139,10 +139,11 @@
             <textarea id="comment" name=REMARQUES rows="5" cols="60" placeholder="La parole est à vous"></textarea>
             
             <p>
-             L'inscription sera définitive après avoir reçu le paiement en deux chèques (se reporter au règlement pour participation selon le format) à envoyer par courrier "SAVM 5 ter avenue du bac 94210 la Varenne saint-hilaire" avec enveloppe de retour.
+             L'inscription sera définitive après avoir reçu le paiement en deux chèques (se reporter au règlement pour participation selon le format) à envoyer par courrier "SAVM 61 bis avenue didier 94210 la Varenne saint-hilaire" avec enveloppe de retour.
             </p>
             <p>                
-                <input id="REGLE_ADHESION" type="checkbox"  onclick='javascript:regles()'  title="Règles d'adhésion" NAME="REGLE_ADHESION" required>J'ai lu, compris et accepté <span class="obligatoire">*</span><A href="reglementsSAVM.pdf" target="Reglements SAVM">les règles d'adhésion</A>
+                <input id="REGLE_ADHESION" type="checkbox"  onclick='javascript:regles()'  title="Règles d'adhésion" NAME="REGLE_ADHESION" required>J'ai lu, compris et accepté les règles d'adhésion<span class="obligatoire">*</span>
+                <A href="reglementsSAVM.pdf" target="Reglements SAVM"> Téléchargement <img height="30" width="30" src="pdf2.png"></A>
             </p>
             
             
