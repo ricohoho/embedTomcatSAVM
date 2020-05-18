@@ -110,15 +110,15 @@
                 <P>
                 	<label class="Dimensions" for="Dimensions">Image de l'oeuvre<span class="obligatoire">*</span></label>                	
                     <input type = "file" name = "file" size = "50" required/>
-                    <br><label class="Dimensions" for="Dimensions">(La qualité de l'image doit être suffisante pour le catalogue : taille supérieure à 1 Mo)</label>
+                    <br><label class="Dimensions" for="Dimensions">(La qualité de l'image doit être suffisante pour le catalogue : taille supérieure à <b>1 Mo et inférieure à 5 Mo</b>)</label>
                 </P>
             <p>
                 <label class="label" for="prix">Prix de vente<span class="obligatoire">*</span></label>
                 <input id="prix" type="number" maxlength="5" size="5" placeholder="Euros" pattern="[0-9]{5}" title="Dimensions" name="OEUVRE_PRIX" required> 
             </p>
             <p>
-                <label class="label" for="siret">Numéro de siret<span class="obligatoire">*</span></label>
-                <input id="site" type="text" maxlength="14" size="14" placeholder="siret (14 Chifres)" pattern="[0-9]{14}" title="Dimensions" name="SIRET_MDA" required>
+                <label class="label" for="siret">Numéro de siret</label>
+                <input id="site" type="text" maxlength="14" size="14" placeholder="siret (14 Chifres)" pattern="[0-9]{14}" title="Dimensions" name="SIRET_MDA" >
             </p>
             <p class="margel">Disponibilités pour les gardes
                 <input type="radio" value="oui" id="md1" name="DISPO_GARDE" >
@@ -139,11 +139,11 @@
             <textarea id="comment" name=REMARQUES rows="5" cols="60" placeholder="La parole est à vous"></textarea>
             
             <p>
-             L'inscription sera définitive après avoir reçu le paiement en deux chèques (se reporter au règlement pour participation selon le format) à envoyer par courrier "SAVM 61 bis avenue didier 94210 la Varenne saint-hilaire" avec enveloppe de retour.
+             L'inscription sera <A style="text-decoration:none;color:black"" href=renvoiImage.jsp>définitive</A> après avoir reçu le paiement en deux chèques (se reporter au règlement pour participation selon le format) à envoyer par courrier "SAVM 61 bis avenue didier 94210 la Varenne saint-hilaire" avec enveloppe de retour.
             </p>
             <p>                
                 <input id="REGLE_ADHESION" type="checkbox"  onclick='javascript:regles()'  title="Règles d'adhésion" NAME="REGLE_ADHESION" required>J'ai lu, compris et accepté les règles d'adhésion<span class="obligatoire">*</span>
-                <A href="reglementsSAVM.pdf" target="Reglements SAVM"> Téléchargement <img height="30" width="30" src="pdf2.png"></A>
+                <A href="http://davic.mkdh.fr/savm-data/reglementsSAVMV2.pdf" target="Reglements SAVM"> Téléchargement <img height="30" width="30" src="pdf2.png"></A>
             </p>
             
             
@@ -160,7 +160,7 @@
 <script>
 function regles() {
 	var strWindowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes";
-	 windowObjectReference = window.open("reglementsSAVM.pdf", "Reglement SAVM 2020", strWindowFeatures);
+	 windowObjectReference = window.open("http://davic.mkdh.fr/savm-data/reglementsSAVMV2.pdf", "Reglement SAVM 2020", strWindowFeatures);
 	
 	
 }
