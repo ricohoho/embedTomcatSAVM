@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>INSCRIPTION SALON SAVM 2020</title>
+    <title>INSCRIPTION SALON SAVM 2022</title>
     <link rel="stylesheet" href="styles1.css">
 </head>
  <!-- Verson du 05.03 à 17:44 -->
 <body>
 	<div class="img-container"> <!-- Block parent element -->
 		<img src=banniereSAVM.jpg width=600px align=hcenter>
-		<H2>INSCRIPTION SALON SAVM 2020</H2>
-		<label for="md">Exposition du 21 Novembre au 6 Décembre 2020</label><BR><br>
+		<H2>INSCRIPTION SALON SAVM 2022</H2>
+		<label for="md">Exposition du 5 au 27 Novembre 2022</label><BR><br>
 	</div>
 
     <form action = "helloUploadRemplace" method = "post" enctype = "multipart/form-data">

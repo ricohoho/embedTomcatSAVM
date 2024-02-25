@@ -4,6 +4,8 @@ package rico.embedtomcat;
 import java.io.*;
 import java.net.URI;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.text.CharacterIterator;
 import java.text.SimpleDateFormat;
 import java.text.StringCharacterIterator;
@@ -38,7 +40,7 @@ public class UploadServlet extends HttpServlet {
 	
 	protected boolean isMultipart;
 	protected String filePath;
-	protected int maxFileSize = 15 * 1024 * 1024;
+	protected int maxFileSize = 50 * 1024 * 1024;
 	protected int maxFileSizeAVM = 5 * 1024 * 1024;
 	protected int minFileSize = 1 * 1024 * 1024;
 	protected int maxMemSize = 1024 * 1024;
@@ -123,13 +125,14 @@ public class UploadServlet extends HttpServlet {
     	 
     	 // Check that we have a file upload request
          isMultipart = ServletFileUpload.isMultipartContent(request);
-         response.setContentType("text/html");
+         //response.setContentType("text/html");
+         response.setContentType("text/html;charset=UTF-8");
          java.io.PrintWriter out = response.getWriter( );
       
          if( !isMultipart ) {
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>INSCRIPTION SALON SAVM 2020 - Merci</title>");  
+            out.println("<title>INSCRIPTION SALON SAVM 2024 - Merci</title>");  
             out.println("</head>");
             out.println("<body>");
             out.println("<p>No file uploaded</p>"); 
@@ -194,7 +197,7 @@ public class UploadServlet extends HttpServlet {
 
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>INSCRIPTION SALON SAVM 2020 - Merci</title>");  
+            out.println("<title>INSCRIPTION SALON SAVM 2024 - Merci</title>");  
             out.println("<link rel='stylesheet' href='styles1.css'>");
             out.println("</head>");
             out.println("<body>");
@@ -209,16 +212,64 @@ public class UploadServlet extends HttpServlet {
             
             String DIMENSIONX="0";
             String DIMENSIONY="0";
+            String DIMENSIONZ="0";
             String paramNom="";
             String paramPrenom="";
             System.out.println("UploadServlet doPost avant parcour des ficheirs");
             while ( i.hasNext () ) {
+               
                FileItem fi = (FileItem)i.next();
                if ( !fi.isFormField () ) {
+            	   System.out.println("UploadServlet doPost !fi.isFormField");
                   // Get the uploaded file parameters
                   String fieldName = fi.getFieldName();
                   String fileName = fi.getName();
-                  System.out.println("UploadServlet fileName="+fileName);
+                  System.out.println("UploadServlet fileName Original ="+fileName);
+                  
+                  //EF 20240225 rempalcement des caractère accentués
+                  //fileName = NomaliseStringAccent.enleverAccents(fileName);                                   
+                  //System.out.println("UploadServlet fileName Sans accens  ="+fileName);
+                  /*
+                  String[] encodingsToTry = {"UTF-8", "ISO-8859-1", "ISO-8859-2","Windows-1252"};
+                  for (String encoding : encodingsToTry) {
+                      try {
+                          fileName = new String(fileName.getBytes(encoding), "UTF-8");
+                          System.out.println(encoding+" UrdDECODER  ="+fileName);
+                      } catch (UnsupportedEncodingException e) {
+                    	  System.out.println(encoding+" exceltion   ="+e);
+                      }
+                  }                  
+                  */
+                  
+                  Character car = fileName.charAt(1); 
+                  System.out.println("car au 1er :  "+car);
+                  int code = (int) car;
+              	  System.out.println("code car au 1 er carcatere "+code);
+              	  
+              	  car = fileName.charAt(3);
+              	  System.out.println("car au 1er :  "+car);
+              	  code = (int) car;
+            	  System.out.println("code car au 1 er carcatere "+code);
+                  
+            	  /*
+                  byte[] bytes = fileName.getBytes(StandardCharsets.ISO_8859_1);
+                  //String encoding =NomaliseStringAccent.detectEncoding(bytes);
+                  //System.out.println("Encodage détecté : " + encoding);
+                  fileName = new String(bytes, "UTF-8");
+                  //System.out.println("defaultCharset:"+Charset.defaultCharset());
+                  //fileName = new String(bytes, StandardCharsets.ISO_8859_1);//StandardCharsets.ISO_8859_1
+                  
+                  car = fileName.charAt(1);
+                  System.out.println("car au 1er :  "+car);
+                  code = (int) car;
+              	  System.out.println("code car au 1 er carcatere "+code);
+                  
+                  System.out.println("UploadServlet fileName Apres UrdDECODER  ="+fileName);
+                  fileName = fileName.replace("?", "e");
+                  System.out.println("UploadServlet apres suppression des ?  ="+fileName);
+                  */
+                  
+                  
                   String contentType = fi.getContentType();
                   boolean isInMemory = fi.isInMemory();
                   sizeInBytes = fi.getSize();
@@ -250,25 +301,47 @@ public class UploadServlet extends HttpServlet {
                   String url= _URL.toString();//"http://davic.mkdh.fr/savm-data/file/"+URLEncoder.encode(fileNameID, "UTF-8");
                   llRow.add(url);
                } else {
+            	   
             	   String name = fi.getFieldName();
+            	   System.out.println("UploadServlet doPost else name : "+name );
             	   llRow.add(name);            	   
-                   String value = fi.getString(); 
+                   String value = fi.getString();
+                   System.out.println("UploadServlet doPost else value : "+value );
+                   
+                   //EF 20240225
+                   //En ajouter UTF-8 dans la balise <FORM, le nom du fichier est correcte apr contre les champs saisie doivent etre convertie 
+                   value = new String(value.getBytes(StandardCharsets.ISO_8859_1), "UTF-8");
                    
                    if (name.equals("NOM")) {                	   
                 	   value=value.toUpperCase();
                 	   paramNom=value;
                    }
                    if (name.equals("PRENOM")) {
-                	   value=UtilServlet.upper1Lettre(value);
+                	   if ((value==null) || "".equals(value))   {
+                		   value="";
+                	   } else { 
+                		   value=UtilServlet.upper1Lettre(value);
+                	   }
                 	   paramPrenom=value;
                    }
-                   if (name.equals("ADR_VILLE")) value=value.toUpperCase();
+                   /*
+                   if (name.equals("ADR_VILLE")) {
+                	   value = new String(value.getBytes(StandardCharsets.ISO_8859_1), "UTF-8");
+                	   value=value.toUpperCase();
+                   }
+                   */
                    if (name.equals("EMAIL")) value=value.toLowerCase();
                    if (name.equals("SITE_INTERNET")) value=value.toLowerCase();
                    
                    if (name.equals("DIMENSIONX")) DIMENSIONX=value;
                    if (name.equals("DIMENSIONY")) DIMENSIONY=value;
+                   if (name.equals("DIMENSIONZ")) DIMENSIONZ=value;
                    
+                   /*
+                   if (name.equals("OEUVRE_TITRE")) {
+                	   value = new String(value.getBytes(StandardCharsets.ISO_8859_1), "UTF-8");
+                   }
+                   */
                                       
                    llRow.add(value);
                    //out.println("PAram : "+name +"="+ value+ "<br>");                                                         
@@ -340,13 +413,18 @@ public class UploadServlet extends HttpServlet {
            llRow.add(idPost);
            
            llRow.add("OEUVRE_DIM");
-           llRow.add(DIMENSIONX+" x "+DIMENSIONY);
+           if (DIMENSIONZ.equals("0"))
+        	   llRow.add(DIMENSIONX+" x "+DIMENSIONY);
+           else 
+        	   llRow.add(DIMENSIONX+" x "+DIMENSIONY+" x "+DIMENSIONZ);
+        	   
             
            
             
           //=========== transformation liste paramX=valueX,ParamY=ValueY,... en value1,value2,... trié dans l'odre de la sheet
+            System.out.println("UploadServlet doPost append ligne dans Google Sheet");
             SheetSAVM _SheetSAVM = new SheetSAVM();  
-    		_SheetSAVM.initOdreChamps("CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,PHOTO,DATE,STATUT,CHEQUE,REMARQUES");			
+    		_SheetSAVM.initOdreChamps("CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,PHOTO,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP");			
     		_SheetSAVM.listeDepart =  new ArrayList<Object>(llRow);
     		_SheetSAVM.creteListeShhet();
     		
@@ -357,6 +435,7 @@ public class UploadServlet extends HttpServlet {
 
     		String nomFichierSerialise="listData_"+ idPost;
     		try {
+    			System.out.println("UploadServlet doPost fichier Backup");
     			nomFichierSerialise = UtilServlet.serialise(nomFichierSerialise,_SheetSAVM.ListeArrive);
     			UtilServlet.deSerialise(nomFichierSerialise);
     		} catch (Exception e) {
@@ -368,14 +447,18 @@ public class UploadServlet extends HttpServlet {
     		 
     		//===================== LEcture puis ecriture de la SpreedSheet ======================================================================
     		try {
+    			System.out.println("UploadServlet doPost lectrue ligne dans Google Sheet");
     			//===================== LEcture de la SpreedSheet			
     			UtilServlet.lectureGoogleSheet(spreadsheetId);
     			//=========== Ecriture : Append dans la SpreedSheet 
+    			System.out.println("UploadServlet doPost append ligne dans Google Sheet");
     			UtilServlet.appendGoogleSheet(spreadsheetId,_SheetSAVM.ListeArrive);
     			
         		System.out.println("API Goole Mise a jour OK, deplacement du fichier serialisé Backup");
         		File file = new File("data/new/"+nomFichierSerialise);
         		file.renameTo(new File("data/ok/"+nomFichierSerialise));
+        		
+        		
         		
     		} catch (Exception e) {
     			// TODO Auto-generated catch block
@@ -394,7 +477,7 @@ public class UploadServlet extends HttpServlet {
 			System.out.println("fileupload exception : " +ex);
 			out.println("<html>");
 			out.println("<head>");
-			out.println("<title>INSCRIPTION SALON SAVM 2020 - Merci</title>");  
+			out.println("<title>INSCRIPTION SALON SAVM 2024 - Merci</title>");  
 			out.println("<link rel='stylesheet' href='styles1.css'>");
 			out.println("</head>");
 			out.println("<body>");

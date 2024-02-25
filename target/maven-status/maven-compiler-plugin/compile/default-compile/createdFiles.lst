@@ -1,6 +1,8 @@
 rico\embedtomcat\App.class
+rico\embedtomcat\NomaliseStringAccent.class
 rico\embedtomcat\UploadServlet.class
-rico\embedtomcat\FileLocationContextListener.class
-rico\embedtomcat\Main.class
 rico\embedtomcat\UtilServlet.class
-rico\embedtomcat\HelloServlet.class
+rico\embedtomcat\UploadServletRemplace.class
+rico\embedtomcat\FileLocationContextListener.class
+rico\embedtomcat\UploadServletRemplace2.class
+rico\embedtomcat\Main.class

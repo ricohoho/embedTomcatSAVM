@@ -32,7 +32,8 @@ public class UtilServlet {
 		}              
        
         //READ Sample
-        String range = "Sheet1!A1:E";        
+        //String range = "Sheet1!A1:E";
+        String range = "Inscription!A1:E";
         List<List<Object>> values = spreadsheetSnippets.getValues(spreadsheetId, range);
 
         //============ Display value  =================
@@ -74,7 +75,9 @@ public class UtilServlet {
    	 List<List<Object>> llTab = new ArrayList<List<Object>>(); 
         llTab.add(llRow);        
         //String range = "Sheet1!A:T";
-        String range = "Sheet1";
+        //String range = "Sheet1";
+        String range = "Inscription";
+        
     	
         String  valueInputOption = "USER_ENTERED";
         spreadsheetSnippets.appendValues(spreadsheetId, range, valueInputOption, llTab);
@@ -318,6 +321,7 @@ public class UtilServlet {
     }
     
     public static String upper1Lettre(String val) {
+    	System.out.println("upper1Lettre");
     	val=val.toLowerCase();
     	val=val.substring(0, 1).toUpperCase()+val.substring(1);
     	return val;

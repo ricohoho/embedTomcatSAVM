@@ -1,8 +1,13 @@
 package rico.embedtomcat;
 
+/*
+ * ====================== PAS UTILISE ============================
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -105,7 +110,15 @@ public class UploadServletRemplace extends UploadServlet {
               // Get the uploaded file parameters
               String fieldName = fi.getFieldName();
               String fileName = fi.getName();
-              System.out.println("UploadServlet fileName="+fileName);
+              System.out.println("UploadServletRemplace fileName="+fileName);
+              
+              //EF 20240225 rempalcement des caractère accentués
+              fileName = NomaliseStringAccent.enleverAccents(fileName);                                   
+              System.out.println("UploadServlet fileName Sans accens  ="+fileName);
+              byte[] bytes = fileName.getBytes("ISO-8859-1");
+              fileName = new String(bytes, "UTF-8");
+              System.out.println("UploadServlet fileName Apres UrdDECODER  ="+fileName);
+              
               String contentType = fi.getContentType();
               boolean isInMemory = fi.isInMemory();
               sizeInBytes = fi.getSize();
@@ -193,7 +206,9 @@ public class UploadServletRemplace extends UploadServlet {
 			UtilServlet.lectureGoogleSheet(spreadsheetId);
 			//=========== Ecriture : On recherche la ligne avec l'ancien ID d'insscriptio, si trouver on remplace l'url du fichier par le nouveau 
 			String numLigneOuRange="LIGNE";
-	        String sheetName="Sheet1";
+	        //String sheetName="Sheet1";
+			String sheetName="Inscription";
+	        
 	        String numLignFind = UtilServlet.rechercheValeurDansUneColonne( spreadsheetId,paramOldIdPost,sheetName,"S",numLigneOuRange);
 	        System.out.println("numLignFind="+numLignFind);
 	        int numLignFindInt = Integer.parseInt(numLignFind);

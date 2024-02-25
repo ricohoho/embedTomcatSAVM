@@ -41,7 +41,6 @@ select
 
 textarea {
     border: 1px solid #34495e;
-    height: 100px;
 }
 
 input[type=submit] {
