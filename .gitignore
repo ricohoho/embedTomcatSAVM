@@ -4,7 +4,11 @@
 /tomcat.8080
 /tomcat.8081
 WorkFlowSAVM..pptx
-target/
+target/archive-tmp/
+target/classes/
+target/generated-sources/
+target/maven-status/
+target/test-classes/
 data/
 src/main/webapp/old/
 /lib
