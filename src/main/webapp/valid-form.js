@@ -28,7 +28,7 @@ const errorProps = [
   'valueMissing',
   'customError'
 ]
-
+ 
 function getCustomMessage (input, customMessages) {
   customMessages = customMessages || {}
   const localErrorProps = [`${input.type}Mismatch`].concat(errorProps)
