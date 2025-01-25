@@ -423,8 +423,13 @@ public class UploadServlet extends HttpServlet {
             
           //=========== transformation liste paramX=valueX,ParamY=ValueY,... en value1,value2,... trié dans l'odre de la sheet
             System.out.println("UploadServlet doPost append ligne dans Google Sheet");
-            SheetSAVM _SheetSAVM = new SheetSAVM();  
-    		_SheetSAVM.initOdreChamps("CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,PHOTO,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP");			
+            SheetSAVM _SheetSAVM = new SheetSAVM();
+            String OrdreColonne;
+            //Version 2024
+            OrdreColonne = "CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,PHOTO,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP";
+            //version 2025
+            OrdreColonne = "CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,PHOTO,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP";
+            _SheetSAVM.initOdreChamps(OrdreColonne);			
     		_SheetSAVM.listeDepart =  new ArrayList<Object>(llRow);
     		_SheetSAVM.creteListeShhet();
     		

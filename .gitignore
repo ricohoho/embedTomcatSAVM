@@ -5,10 +5,14 @@
 /tomcat.8081
 WorkFlowSAVM..pptx
 target/archive-tmp/
-target/classes/
+target/classes/rico/embedtomcat/
 target/generated-sources/
 target/maven-status/
 target/test-classes/
 data/
 src/main/webapp/old/
 /lib
+target/classes/rico/embedtomcat/App.class
+target/classes/rico/embedtomcat/FileLocationContextListener.class
+target/classes/rico/embedtomcat/Main.class
+target/classes/rico/embedtomcat/UtilServlet.class
