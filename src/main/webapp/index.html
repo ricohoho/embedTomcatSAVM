@@ -1,0 +1,483 @@
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>INSCRIPTION SALON SAVM 2023</title>
+    <link rel="stylesheet" href="styles1.css">
+    
+</head> 
+
+<body>
+    <main>
+        <div class="container_left">
+            <div class="img-container"> <!-- Block parent element -->
+                <!-- <img src=banniereSAVM.jpg> -->
+                 <img src="Logo_Savm.png" style="width: 7vw;">
+                <H2>INSCRIPTION SALON SAVM 2024</H2>
+                <label for="md">Exposition du 28 septembre au 20 octobre  2024 à 17h</label><BR><br>
+                <p class="sous_text">Toute ces informations sont récoltés par la société du salon des artistes du val de marne en toute sécurité. Toutes informations nécéssaires à l'inscription d'une ou plusieurs oeuvres, resterons privées.</p>
+            </div>
+            <div>
+                <p class="sous_text" style="margin-top: auto;">Créer par Le salon des artistes du val de marne</p>
+            </div>
+        </div>
+        <div class="container_right">
+            <div id="container" class="container mt-5">
+                <div class="progress px-1" style="height: 3px; transform: translateY(15px);">
+                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="step-container d-flex justify-content-between">
+                <div class="step-circle" >1</div>
+                <div class="step-circle" >2</div>
+                <div class="step-circle" onclick="displayStep(3)" >3</div>
+                <div class="step-circle" >4</div>
+                <!-- onclick="displayStep(4)" -->
+                </div>
+            
+
+
+                <form id="multi-step-form" action = "helloUpload" method = "post" enctype = "multipart/form-data" accept-charset="utf-8">
+                    <div class="step step-1"  id="step-1">
+                        <fieldset>
+                            <legend>Qui êtes-vous ?</legend>
+                        
+                            <!-- Step 1 form fields here -->
+
+                            <div class="mb-3">
+                                <p class="sous_text">Les champs marqués de l'astérisque rouge sont obligatoires.</p>
+                                <div class="contain_Who slide-right" style="flex-direction: column; align-items: start;">
+                                    <p style="margin-top: 16px;">Civilité<span class="obligatoire">*</span></p>
+                                    <!-- <label class="label" for="civilite">Civilité<span class="obligatoire">*</span></label> -->
+                                    <div class="radio-input slide-right" style="gap: 16px;">
+                                        <label for="md">
+                                            <input type="radio" value="Madame" id="md" name="CIVIL"  required="required"/>
+                                            <p>Madame</p>
+                                        </label>
+                                        <label for="ms">
+                                            <input type="radio" value="Monsieur" id="ms" name="CIVIL"  required="required">
+                                            <p>Monsieur</p>  
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p style="margin-top: 16px;" class="slide-right">Identité<span class="obligatoire">*</span></p>
+                                    <div class="contain_Who slide-right">
+                                        <div class="Input_style slide-right" style="margin-bottom: 4px;">
+                                            <input type="text" id="contact_nom" name="NOM" required>
+                                            <label class="label" for="contact_nom">Nom / Pseudo<span class="obligatoire">*</span></label>
+                                        </div>
+                                        
+                                        <div class="Input_style slide-right" style="margin-bottom: 4px;">
+                                            <input type="text" id="contact_prenom" name="PRENOM" required>
+                                            <label class="label" for="contact_prenom">Prénom</label>
+                                        </div>
+                                    </div>
+                                    <p class="sous_text slide-right">(utilisé dans le catalogue)</p>
+                                </div>
+                                <p style="margin-top: 16px;" class="slide-right">Contact<span class="obligatoire">*</span></p>
+                                <div class="Input_style slide-right">
+                                    <input id="email" type="email" name="EMAIL" required oninvalid="this.setCustomValidity('Votre email doit contenir un  @')" oninput="this.setCustomValidity('')">
+                                    <label class="label" for="email">Email<span class="obligatoire">*</span></label>
+                                </div>
+                                <!---->
+                                <!-- <p>Téléphone<span class="obligatoire">*</span></p>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <p>+33</p>
+                                    <input style="margin-right: 8px;" name='code' type="number" class='code-input' required/>
+                                    <input name='code' class='code-input' type="number" required/>
+                                    <input style="margin-right: 8px;" name='code' type="number" class='code-input' required/>
+                                    <input name='code' class='code-input' type="number" required/>
+                                    <input style="margin-right: 8px;" name='code' type="number" class='code-input' required/>
+                                    <input name='code' class='code-input' type="number" required/>
+                                    <input style="margin-right: 8px;" name='code' type="number" class='code-input' required/>
+                                    <input name='code' class='code-input' type="number" required/>
+                                    <input name='code' class='code-input' type="number" required/>
+                                </div> -->
+                                <!---->
+                                <div class="Input_style slide-right">
+                                    <input id="tel" type="tel" name="TEL" maxlength="10" pattern="(\+33\s[1-9](\s?\d{2}){4})"  class="Phone_number" required>
+                                    <label class="label" for="email">Tel<span class="obligatoire">*</span></label>
+                                </div>
+                            </div>
+                            <button style="font-family: 'Poppins', serif;" type="submit" value="Envoyer" class="boton-elegante btn btn-primary next-step">
+                                Suivant
+                                <div class="arrow-wrapper">
+                                    <div class="arrow"></div>
+                            
+                                </div>
+                            </button>   
+                        </fieldset> 
+                    </div>
+            
+            
+
+
+                <div class="step step-2" id="step-2">
+                    <fieldset>
+                        <legend>Où habitez-vous ?</legend>
+
+                    <!-- Step 2 form fields here -->
+
+                    <div class="mb-3">
+                        <p class="sous_text slide-right">Les champs marqués de l'astérisque rouge sont obligatoires.</p>
+                        <p style="margin-top: 16px;">Votre adresse<span class="obligatoire">*</span></p>
+                        <div class="contain_Who slide-right">
+                            <div class="Input_style">
+                                <input id="num" type="text" name="ADR_NUM" size="10"  title="nuléro : 33 Bis par exemple" required>
+                                <label class="label" for="num">Numéro de rue <span class="obligatoire">*</span></label>
+                            </div>
+                            <div class="Input_style slide-right">
+                                <input id="rue" type="adress" size="40" name="ADR_RUE" maxlength="150" required>
+                                <label class="label" for="rue">Nom de rue<span class="obligatoire">*</span></label>
+                            </div>
+                        </div>
+                        
+                        <div class="contain_Who_check slide-right" style="display: flex; flex-direction: row; gap: 16px; width: 50vw;">
+                            
+                                                        
+                            <div class="Input_style slide-right">
+                                <input id="cp" type="text"   onkeyup="this.value = this.value.toUpperCase();" maxlength="30" name="ADR_VILLE" size="10"  title="ville" required>
+                                <label class="label" for="ville">Ville<span class="obligatoire">*</span></label>
+                            </div>
+                            <!-- <div>
+                                <input name='code' class='code-input' type="number" required/>
+                                <input name='code' class='code-input' type="number" required/>
+                                <input name='code' class='code-input' type="number" required/>
+                                <input name='code' class='code-input' type="number" required/>
+                                <input name='code' class='code-input' type="number" required/>
+                            </div> -->
+
+                            <div class="Input_style2 slide-right">
+                                <input id="cp" type="text" maxlength="5" name="ADR_CODE_POSTAL" size="10" pattern="[0-9]{5}" title="nombre à 5 chiffres" required>
+                                <label class="label" for="cp">Code postal<span class="obligatoire">*</span></label>                
+                            </div>
+                        </div>
+                
+                        
+                        <button type="button" class="boton-elegante btn btn-primary next-step">
+                            Suivant
+                            <div class="arrow-wrapper">
+                                <div class="arrow"></div>
+                        
+                            </div>
+                        <button type="button" class="boton-previous btn btn-primary prev-step">
+                            Retour
+                        </button>
+                        </button>
+                    </fieldset>
+                    </div>
+            
+
+
+                <div class="step step-3"   id="step-3">
+                    <fieldset id="top">
+                        <legend>Quelques informations sur l'oeuvre</legend>
+
+                    <!-- Step 3 form fields here -->
+
+                    <div class="mb-3">
+
+                        <!--OEUVRE 1-------------------------------------------------------------------------------------------------------------------------------->
+
+                        <p class="sous_text slide-right">Les champs marqués de l'astérisque rouge sont obligatoires.</p>
+                        <!---->
+                        <div>
+                            <p style="margin-top: 24px;">Vous pouvez ajouter deux oeuvres maximum.</p>
+                            <div class="tabs tab-container">
+                                <div class="tab active" onclick="switchTab(0)" >Oeuvre 1</div>
+                                <div id="oeuvre2_simple"  onclick="switchTab(1)" class="tab" >Oeuvre 2</div>                                
+                                <!--  -->
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div class="Input_style slide-right">
+                                <input id="OEUVRE_TITRE" type="text" size="40" name="OEUVRE_TITRE" required>
+                                <label class="label" for="Titre">Titre de l'oeuvre<span class="obligatoire">*</span></label>
+                            </div>
+                            <div class="contain_Who slide-right">
+                                <p>Type d'oeuvre</p><span class="obligatoire">*</span>
+                                <div class="Input_style slide-right">
+                                    <label for="selectniveau" class="label"></label>
+                                    <select id="selectniveau" name="OEUVRE_TYPE" required>
+                                        <option value="0">Sélectionnez votre type d'oeuvre</option>
+                                        <option value="Sculpture">Sculpture</option>
+                                        <option value="Peinture">Peinture</option>
+                                        <option value="Dessin">Dessin</option>
+                                        <option value="Gravure">Gravure</option>
+                                        <option value="Autres">Autres</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                                <div class="Input_style slide-right">
+                                    <textarea id="OEUVRE_DETAIL" rows="5" cols="60" placeholder="Description de l'oeuvre (5 lignes max)"  name="OEUVRE_DETAIL" maxlength = "300"></textarea>
+                                    <label class="label" for="rue">Décrire son oeuvre </label>
+                                </div>
+                                <div class="Input_style slide-right">
+                                    <textarea id="OEUVRE_DETAIL_EXPO" rows="3" cols="60" placeholder="Remarques particulières  (3 lignes max)"  name="OEUVRE_DETAIL_EXPO" maxlength = "180"></textarea>
+                                    <label  for="rue">Remarques particulières à l'exposition de l'œuvre  </label> 
+                                </div>
+                            <div>
+                                <p>Dimension de l'oeuvre (cm)</p>
+                                <div class="contain_Who slide-right">
+                                    <div class="Input_style2">
+                                        <input  type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions" name=DIMENSIONY required>
+                                        <label class="Dimensions" for="Dimensions">x Hauteur : <span class="obligatoire">*</span></label>
+                                    </div>
+                                    <div class="Input_style2 slide-right">
+                                        <input id="Dimensions" type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions"  name=DIMENSIONX required>
+                                        <label class="Dimensions" for="Dimensions">x Largeur : <span class="obligatoire">*</span></label>                                        
+                                    </div>
+                                    <div class="Input_style2 slide-right">
+                                        <input id="Dimensions" type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions"  name=DIMENSIONZ >
+                                        <label class="Dimensions" for="Dimensions">x Profondeur : </label>
+                                    </div>    
+                                </div>
+                            </div>
+
+
+                            <!-- From Uiverse.io by Yaya12085 --> 
+                            <div class="container_drop_file slide-right"> 
+                                <div class="header_drop_file"> 
+                                <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier"> 
+                                        <path d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path> 
+                                    </g>
+                                </svg>  -->
+                                    <img id="preview" src="#" alt="Aperçu de l'image" style="display: none; max-height: 180px; margin-top: 20px;">
+                                    <p>Ajoutez une photo</p>
+                                </div> 
+                                <label for="file" class="footer"> 
+                                    <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M15.331 6H8.5v20h15V14.154h-8.169z"></path><path d="M18.153 6h-.009v5.342H23.5v-.002z"></path></g></svg> 
+                                    <p id="file-name">Aucuns fichiers selectionnés</p> 
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z" stroke="#000000" stroke-width="2"></path> <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round"></path> <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z" stroke="#000000" stroke-width="2"></path> </g></svg>
+                                </label> 
+                                <input id="file" type="file" name="file"> 
+                            </div>
+                            <!---->
+
+                            
+                            <div>
+                                <!-- <div class="contain_Who">
+                                    <p>Image de l'oeuvre<span class="obligatoire">*</span></p>
+                                    <div>                  
+                                        <input type = "file" name = "file" size = "50" required/>
+                                        <label class="Dimensions" for="Dimensions"></label>
+                                    </div>
+                                </div> -->
+                                <br><label class="Dimensions sous_text slide-right" for="Dimensions">(La qualité de l'image doit être suffisante pour le catalogue : taille supérieure à <b>1 Mo et inférieure à 5 Mo</b>)</label>
+                            </div>
+                            <div>
+                                <p style="margin-top: 16px;">Prix de l'oeuvre<span class="obligatoire">*</span></p>
+                                <div class="Input_style slide-right">
+                                    <input id="prix" type="number" maxlength="5" size="5" pattern="[0-9]{5}" title="Dimensions" name="OEUVRE_PRIX" required>
+                                    <label class="label" for="prix">Prix de vente<span class="obligatoire">*</span></label> 
+                                </div>
+                            </div>
+                        </div>
+                
+                        <!--OEUVRE 2-------------------------------------------------------------------------------------------------------------------------------->
+
+                        <div class="tab-content hidden">
+                            <div class="Input_style slide-right">
+                                <input id="OEUVRE_TITRE_2" type="text" size="40" name="OEUVRE_TITRE_2">
+                                <label class="label" for="Titre_2">Titre de la seconde oeuvre<span class="obligatoire">*</span></label>
+                            </div>
+                            <div class="contain_Who slide-right">
+                                <p>Type d'oeuvre</p><span class="obligatoire">*</span>
+                                <div class="Input_style slide-right">
+                                    <label for="selectniveau_2" class="label"></label>
+                                    <select id="selectniveau_2" name="OEUVRE_TYPE_2">
+                                        <option value="0">Sélectionnez votre type d'oeuvre</option>
+                                        <option value="Sculpture">Sculpture</option>
+                                        <option value="Peinture">Peinture</option>
+                                        <option value="Dessin">Dessin</option>
+                                        <option value="Gravure">Gravure</option>
+                                        <option value="Autres">Autres</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                                <div class="Input_style slide-right">
+                                    <textarea id="OEUVRE_DETAIL_2" rows="5" cols="60" placeholder="Description de la seconde oeuvre (5 lignes max)"  name="OEUVRE_DETAIL_2" maxlength = "300"></textarea>
+                                    <label class="label" for="rue_2">Décrire son oeuvre</label>
+                                </div>
+                                <div class="Input_style slide-right">
+                                    <textarea id="OEUVRE_DETAIL_EXPO_2" rows="3" cols="60" placeholder="Remarques particulières  (3 lignes max)"  name="OEUVRE_DETAIL_EXPO_2" maxlength = "180"></textarea>
+                                    <label  for="rue_2">Remarques particulières à l'exposition de l'œuvre  </label> 
+                                </div>
+                            <div>
+                                <p>Dimension de la seconde oeuvre (cm)</p>
+                                <div class="contain_Who slide-right">
+                                    <div class="Input_style2">
+                                        <input id="DIMENSIONY_2" type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions_2" name=DIMENSIONY_2>
+                                        <label class="Dimensions" for="Dimensions_2">x Hauteur : <span class="obligatoire">*</span></label>
+                                    </div>
+                                    <div class="Input_style2 slide-right">
+                                        <input id="DimensionX_2" type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions_2"  name=DIMENSIONX_2>
+                                        <label class="Dimensions" for="Dimensions_2">x Largeur : <span class="obligatoire">*</span></label>                                        
+                                    </div>
+                                    <div class="Input_style2 slide-right">
+                                        <input id="DimensionZ_2" type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions_2"  name=DIMENSIONZ_2 >
+                                        <label class="Dimensions" for="Dimensions_2">x Profondeur : </label>
+                                    </div>    
+                                </div>
+                            </div>
+
+
+                            <!-- From Uiverse.io by Yaya12085 --> 
+                            <div class="container_drop_file slide-right"> 
+                                <div class="header_drop_file"> 
+                                <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier"> 
+                                        <path d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        </path> 
+                                    </g>
+                                </svg>  -->
+                                    <img id="preview_2" src="#" alt="Aperçu de l'image" style="display: none; max-height: 180px; margin-top: 20px;">
+                                    <p>Ajoutez une photo</p>
+                                </div> 
+                                <label for="file_2" class="footer"> 
+                                    <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M15.331 6H8.5v20h15V14.154h-8.169z"></path><path d="M18.153 6h-.009v5.342H23.5v-.002z"></path></g></svg> 
+                                    <p id="file-name_2">Aucuns fichiers selectionnés</p> 
+                                    <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z" stroke="#000000" stroke-width="2"></path> <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round"></path> <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z" stroke="#000000" stroke-width="2"></path> </g></svg>
+                                </label> 
+                                <input id="file_2" type="file" name="file_2" style="display: none;"> 
+                            </div>
+                            <!---->
+
+
+                            <div>
+                                <!-- <div class="contain_Who">
+                                    <p>Image de l'oeuvre<span class="obligatoire">*</span></p>
+                                    <div>                  
+                                        <input type = "file" name = "file" size = "50" required/>
+                                        <label class="Dimensions" for="Dimensions"></label>
+                                    </div>
+                                </div> -->
+                                <br><label class="Dimensions sous_text slide-right" for="Dimensions">(La qualité de l'image doit être suffisante pour le catalogue : taille supérieure à <b>1 Mo et inférieure à 5 Mo</b>)</label>
+                            </div>
+                            <div>
+                                <p style="margin-top: 16px;">Prix de l'oeuvre<span class="obligatoire">*</span></p>
+                                <div class="Input_style slide-right">
+                                    <input id="prix_2" type="number" maxlength="5" size="5" pattern="[0-9]{5}" title="Dimensions_2" name="OEUVRE_PRIX_2">
+                                    <label class="label" for="prix_2">Prix de vente<span class="obligatoire">*</span></label> 
+                                </div>
+                            </div>
+                        </div>
+                        <!---->
+                        
+                    <div>
+                        <div class="slide-right contain_Who">
+                            <button id="buton_add" type="button"  class="boton-tertiaire btn btn-primary">
+                                Ajouter une oeuvre
+                            </button>
+                            <button id="buton_suppr" type="button" onclick="switchTab(0)" class="boton-tertiaire btn btn-primary hidden">
+                                Supprimer la seconde oeuvre
+                            </button>
+                            <button type="button" class="boton-elegante btn btn-primary next-step">
+                                Suivant
+                                <div class="arrow-wrapper">
+                                    <div class="arrow"></div>
+                            
+                                </div>
+                            </button>
+                        </div>
+                        <button type="button" class="boton-previous btn btn-primary prev-step">Retour</button>
+                    </div>
+                    </fieldset>
+                </div>
+
+
+
+                <div class="step step-4"  id="step-4">
+                    <fieldset>
+                        <legend class="slide-right">Remarques / Règlements</legend>
+                        <p class="sous_text slide-right">Les champs marqués de l'astérisque rouge sont obligatoires.</p>
+                    <!-- Step 3 form fields here -->
+
+                    <div class="mb-3">
+                        <div>
+                            <p style="margin-top: 16px;" class="slide-right">N° de SIRET</p>
+                            <div class="Input_style slide-right">
+                                <input id="site" type="text" maxlength="14" size="14" placeholder="siret (14 Chifres)" pattern="[0-9]{14}" title="Dimensions" name="SIRET_MDA" >
+                                <label class="label" for="siret">Numéro de siret</label>
+                            </div>
+                            <div style="display: flex; flex-direction: column; ">
+                                <p>ADAGP</p>
+                                    <div class="radio-input slide-right">
+                                        <label for="md">
+                                            <input type="radio" value="oui" id="md1" name="ADAGP"/>
+                                            <p>Oui</p>
+                                        </label>
+                                        <label for="ms">
+                                            <input type="radio" value="non" id="ms1" name="ADAGP" checked/>
+                                            <p>Non</p>  
+                                        </label>
+                                    </div>
+                            </div>    
+                            <!-- <div class="contain_Who_check">ADAGP
+                                <input type="radio" value="oui" id="md1" name="ADAGP" >
+                                <label for="md">oui</label>
+                                <input type="radio" value="non" id="ms1" name="ADAGP" checked>
+                                <label for="ms">non</label>     
+                            </div> -->
+                    <input type="hidden" value="non" id="md1" name="DISPO_GARDE" >   
+                        <p style="margin-top: 16px;" class="slide-right">Votre site internet</p>    
+                        <div class="Input_style slide-right">
+                            <input id="site" type="text" maxlength="50" size="40"  title="Dimensions" NAME="SITE_INTERNET">
+                            <label class="label" for="site">www.VotreSite.fr</label>
+                        </div>
+                        <div class="Input_style slide-right">
+                            <textarea id="comment" name=REMARQUES rows="5" cols="60" placeholder="Un mini CV (5 lignes max)"  maxlength = "300" ></textarea>
+                            <label class="label" for="site">Un mini CV (5 lignes max)</label>
+                        </div>
+                    </div>
+
+                        
+                        <p style="margin-top: 16px;" class="slide-right">L'inscription sera <A style="text-decoration:none;color:black" href=renvoiImage.jsp>définitive</A> après avoir reçu le paiement (un seul chèque) (se reporter au règlement pour participation selon le format) à envoyer par courrier. "SAVM Ateliers d'Art 5 ter, avenue du Bac 94210 La Varenne Saint Hilaire" avec enveloppe de retour.
+                        </p>
+                        <div class="contain_Who slide-right" style="margin-top: 16px;">                
+                            <input id="REGLE_ADHESION" type="checkbox"  onclick='javascript:regles()'  title="Règles d'adhésion" NAME="REGLE_ADHESION" required><p>J'ai lu, compris et accepté les règles d'adhésion<span class="obligatoire">*</span> <a href="http://davic.mkdh.fr/savm-data/reglementsSAVM2023.pdf" target="Reglements SAVM" style="cursor: pointer;"> Lire le règlement 📄</a></p>
+                        </div>
+                    </div>
+                    <div style="margin-top: 16px;">
+                        
+                        <button type="submit" value="Envoyer" class="boton-elegante" onclick="window.location.href = 'congrat.html';">
+                            Envoyer
+                            <div class="arrow-wrapper">
+                                <div class="arrow"></div>
+                        
+                            </div>
+                        </button>
+                        <button type="button" class="boton-previous btn btn-primary prev-step">
+                            Retour
+                        </button>
+                    </div> 
+                    </fieldset>
+                     
+                </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="Page.js"></script>
+    <script src="valid-form.js"></script>
+</body>
+
+<script>
+function regles() {
+    var strWindowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes";
+    //windowObjectReference = window.open("http://davic.mkdh.fr/savm-data/reglementsSAVM2022.pdf", "Reglement SAVM 2022", strWindowFeatures);       
+}
+</script> 
+</html>
