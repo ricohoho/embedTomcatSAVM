@@ -3,16 +3,12 @@ package rico.embedtomcat;
 
 import java.io.*;
 import java.net.URI;
-import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.text.CharacterIterator;
 import java.text.SimpleDateFormat;
 import java.text.StringCharacterIterator;
 import java.util.*;
 
-import javax.print.DocFlavor.URL;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +21,6 @@ import org.apache.commons.fileupload.FileUploadBase;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.output.*;
 
 import ApiGoogle.SheetSAVM; 
 
@@ -34,11 +29,10 @@ import ApiGoogle.SheetSAVM;
         urlPatterns = {"/helloUpload"}
     )
 public class UploadServlet extends HttpServlet {
-//
-	//final String spreadsheetId = "1_wYqKTN57uwoshND3snSbuzzhOHqFQnYkMoDCAaotLw";
-	final String spreadsheetId = "1R_dZQNYTqObHshByD447M3Qk2lG5Rr4lOhORre4qsic";
+
+	static final String spreadsheetId = "1R_dZQNYTqObHshByD447M3Qk2lG5Rr4lOhORre4qsic";
 	
-	protected boolean isMultipart;
+	protected static boolean isMultipart;
 	protected String filePath;
 	protected int maxFileSize = 50 * 1024 * 1024;
 	protected int maxFileSizeAVM = 5 * 1024 * 1024;
@@ -179,7 +173,7 @@ public class UploadServlet extends HttpServlet {
     			out.println("<img src=banniereSAVM.jpg width=600px align=hcenter>");
     			out.println("<br><br><p>");
     			out.println("<label class=''>"); 
-    			out.println("la taille du fichier image doit etre inférieure à 5 Mo !! <BR><B>votre  inscription n'a pas été pris en compte<B>"); 
+    			out.println("la taille du fichier image doit etre infï¿½rieure ï¿½ 5 Mo !! <BR><B>votre  inscription n'a pas ï¿½tï¿½ pris en compte<B>"); 
     			out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
     			out.println("<label>");
     			out.println("<p>");
@@ -213,20 +207,24 @@ public class UploadServlet extends HttpServlet {
             String DIMENSIONX="0";
             String DIMENSIONY="0";
             String DIMENSIONZ="0";
+			String DIMENSIONX_2="0";
+            String DIMENSIONY_2="0";
+            String DIMENSIONZ_2="0";
             String paramNom="";
             String paramPrenom="";
             System.out.println("UploadServlet doPost avant parcour des ficheirs");
             while ( i.hasNext () ) {
                
                FileItem fi = (FileItem)i.next();
-               if ( !fi.isFormField () ) {
+               if ( !fi.isFormField () & fi.getName()!="" ) {
             	   System.out.println("UploadServlet doPost !fi.isFormField");
                   // Get the uploaded file parameters
                   String fieldName = fi.getFieldName();
+				  System.out.println("UploadServlet fieldName=["+fieldName+"]");
                   String fileName = fi.getName();
-                  System.out.println("UploadServlet fileName Original ="+fileName);
+                  System.out.println("UploadServlet fileName Original =["+fileName+"]");
                   
-                  //EF 20240225 rempalcement des caractère accentués
+                  //EF 20240225 rempalcement des caractï¿½re accentuï¿½s
                   //fileName = NomaliseStringAccent.enleverAccents(fileName);                                   
                   //System.out.println("UploadServlet fileName Sans accens  ="+fileName);
                   /*
@@ -254,7 +252,7 @@ public class UploadServlet extends HttpServlet {
             	  /*
                   byte[] bytes = fileName.getBytes(StandardCharsets.ISO_8859_1);
                   //String encoding =NomaliseStringAccent.detectEncoding(bytes);
-                  //System.out.println("Encodage détecté : " + encoding);
+                  //System.out.println("Encodage dï¿½tectï¿½ : " + encoding);
                   fileName = new String(bytes, "UTF-8");
                   //System.out.println("defaultCharset:"+Charset.defaultCharset());
                   //fileName = new String(bytes, StandardCharsets.ISO_8859_1);//StandardCharsets.ISO_8859_1
@@ -290,7 +288,13 @@ public class UploadServlet extends HttpServlet {
                 	  fi.write( file ) ;
                   }
                   //out.println("Uploaded Filename: " + fileNameID + "<br>");
-                  llRow.add("PHOTO");
+				  if (fieldName.equals("file_2")) {
+					llRow.add("PHOTO_2");
+				  } else { 
+					llRow.add("PHOTO");
+				  }
+
+                  
                   
                   URI uri = new URI(
                 		    "http", 
@@ -336,26 +340,25 @@ public class UploadServlet extends HttpServlet {
                    if (name.equals("DIMENSIONX")) DIMENSIONX=value;
                    if (name.equals("DIMENSIONY")) DIMENSIONY=value;
                    if (name.equals("DIMENSIONZ")) DIMENSIONZ=value;
-                   
-                   /*
-                   if (name.equals("OEUVRE_TITRE")) {
-                	   value = new String(value.getBytes(StandardCharsets.ISO_8859_1), "UTF-8");
-                   }
-                   */
+
+				   if (name.equals("DIMENSIONX_2")) DIMENSIONX_2=value;
+                   if (name.equals("DIMENSIONY_2")) DIMENSIONY_2=value;
+                   if (name.equals("DIMENSIONZ_2")) DIMENSIONZ_2=value;
+
                                       
                    llRow.add(value);
-                   //out.println("PAram : "+name +"="+ value+ "<br>");                                                         
+
                }
             }
             
             
-            //Si taille < 1mo : Inscription refusé 
+            //Si taille < 1mo : Inscription refusï¿½ 
             if ( sizeInBytes<minFileSize  ) {            	
                  out.println("<br><br><p>");
                  out.println("<label class=''>"); 
-                 out.println("Votre image n'a pas une définition suffisante (la taille du fichier image doit etre supèrieure à 1 Mo), "
+                 out.println("Votre image n'a pas une dï¿½finition suffisante (la taille du fichier image doit etre supï¿½rieure ï¿½ 1 Mo), "
                 		 +" (Taille actuelle : " +humanReadableByteCountSI(sizeInBytes)+")"     
-                 		+ "<BR><B>votre  inscription n'a pas été pris en compte<B>"); 
+                 		+ "<BR><B>votre  inscription n'a pas ï¿½tï¿½ pris en compte<B>"); 
                  out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
                  out.println("<label>");
                  out.println("<p>");
@@ -365,13 +368,13 @@ public class UploadServlet extends HttpServlet {
             }
             
             
-            //Si taille < 1mo : Inscription refusé 
+            //Si taille > 5mo : Inscription refusï¿½ 
             if ( sizeInBytes>maxFileSizeAVM  ) {            	
                  out.println("<br><br><p>");
                  out.println("<label class=''>"); 
-                 out.println("la taille du fichier image doit etre inférieure à 5 Mo !! "
+                 out.println("la taille du fichier image doit etre infï¿½rieure ï¿½ 5 Mo !! "
                 		 +" (Taille actuelle : " +humanReadableByteCountSI(sizeInBytes)+")"               		 
-                 		+ "<BR><B>votre  inscription n'a pas été pris en compte<B>"); 
+                 		+ "<BR><B>votre  inscription n'a pas ï¿½tï¿½ pris en compte<B>"); 
                  out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
                  out.println("<label>");
                  out.println("<p>");
@@ -383,8 +386,8 @@ public class UploadServlet extends HttpServlet {
             
             out.println("<p>");
             out.println("<label class='label' >"+paramPrenom +" "+ paramNom+"</label><br>");
-            out.println("<label class='label' >Votre inscription a été prise en compte</label><br>");
-            out.println("<label class='label' >N° d'inscription : "+idPost+"</label><br>");            
+            out.println("<label class='label' >Votre inscription a ï¿½tï¿½ prise en compte</label><br>");
+            out.println("<label class='label' >Nï¿½ d'inscription : "+idPost+"</label><br>");            
             out.println("</p>");
             
             
@@ -418,17 +421,22 @@ public class UploadServlet extends HttpServlet {
            else 
         	   llRow.add(DIMENSIONX+" x "+DIMENSIONY+" x "+DIMENSIONZ);
         	   
+			if 	(! DIMENSIONX_2.equals("")) {
+		   		llRow.add("OEUVRE_DIM_2");
+					if (DIMENSIONZ.equals("0"))
+						llRow.add(DIMENSIONX_2+" x "+DIMENSIONY_2);
+					else 
+						llRow.add(DIMENSIONX_2+" x "+DIMENSIONY_2+" x "+DIMENSIONZ_2);
+			}
             
-           
-            
-          //=========== transformation liste paramX=valueX,ParamY=ValueY,... en value1,value2,... trié dans l'odre de la sheet
+          //=========== transformation liste paramX=valueX,ParamY=ValueY,... en value1,value2,... triï¿½ dans l'odre de la sheet
             System.out.println("UploadServlet doPost append ligne dans Google Sheet");
             SheetSAVM _SheetSAVM = new SheetSAVM();
             String OrdreColonne;
             //Version 2024
             OrdreColonne = "CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,PHOTO,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP";
             //version 2025
-            OrdreColonne = "CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,PHOTO,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP";
+            OrdreColonne = "CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,PHOTO,OEUVRE_TYPE_2,OEUVRE_TITRE_2,OEUVRE_DETAIL_2,OEUVRE_DIM_2,OEUVRE_PRIX_2,PHOTO_2,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP";
             _SheetSAVM.initOdreChamps(OrdreColonne);			
     		_SheetSAVM.listeDepart =  new ArrayList<Object>(llRow);
     		_SheetSAVM.creteListeShhet();
@@ -436,7 +444,7 @@ public class UploadServlet extends HttpServlet {
     		
     		
             //=========== Serialisation des valeurs de parametre (en cas de plantage d'inscritpion Goole)=========================================
-    		//Sauvegarde du formulaire valisé
+    		//Sauvegarde du formulaire valisï¿½
 
     		String nomFichierSerialise="listData_"+ idPost;
     		try {
@@ -459,7 +467,7 @@ public class UploadServlet extends HttpServlet {
     			System.out.println("UploadServlet doPost append ligne dans Google Sheet");
     			UtilServlet.appendGoogleSheet(spreadsheetId,_SheetSAVM.ListeArrive);
     			
-        		System.out.println("API Goole Mise a jour OK, deplacement du fichier serialisé Backup");
+        		System.out.println("API Goole Mise a jour OK, deplacement du fichier serialisï¿½ Backup");
         		File file = new File("data/new/"+nomFichierSerialise);
         		file.renameTo(new File("data/ok/"+nomFichierSerialise));
         		
@@ -490,7 +498,7 @@ public class UploadServlet extends HttpServlet {
 			out.println("<img src=banniereSAVM.jpg width=600px align=hcenter>");
 			out.println("<br><br><p>");
 			out.println("<label class=''>"); 
-			out.println("la taille du fichier image doit etre inférieure à 5 Mo ! <BR><B>votre  inscription n'a pas été pris en compte<B>"); 
+			out.println("la taille du fichier image doit etre infï¿½rieure ï¿½ 5 Mo ! <BR><B>votre  inscription n'a pas ï¿½tï¿½ pris en compte<B>"); 
 			out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
 			out.println("<label>");
 			out.println("<p>");

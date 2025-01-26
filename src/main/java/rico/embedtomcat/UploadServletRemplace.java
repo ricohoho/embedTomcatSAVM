@@ -28,7 +28,7 @@ import ApiGoogle.SheetSAVM;
 @WebServlet(
         name = "UploadServletRemplace",
         urlPatterns = {"/helloUploadRemplace"}
-    )
+    ) 
 
 public class UploadServletRemplace extends UploadServlet {
 	
@@ -112,7 +112,7 @@ public class UploadServletRemplace extends UploadServlet {
               String fileName = fi.getName();
               System.out.println("UploadServletRemplace fileName="+fileName);
               
-              //EF 20240225 rempalcement des caractère accentués
+              //EF 20240225 rempalcement des caractï¿½re accentuï¿½s
               fileName = NomaliseStringAccent.enleverAccents(fileName);                                   
               System.out.println("UploadServlet fileName Sans accens  ="+fileName);
               byte[] bytes = fileName.getBytes("ISO-8859-1");
@@ -163,13 +163,13 @@ public class UploadServletRemplace extends UploadServlet {
         }
         
         
-        //Si taille < 1mo : Inscription refusé 
+        //Si taille < 1mo : Inscription refusï¿½ 
         if ( sizeInBytes<minFileSize  ) {            	
              out.println("<br><br><p>");
              out.println("<label class=''>"); 
-             out.println("Votre image n'a pas une définition suffisante (la taille du fichier image doit etre supèrieure à 1 Mo), "
+             out.println("Votre image n'a pas une dï¿½finition suffisante (la taille du fichier image doit etre supï¿½rieure ï¿½ 1 Mo), "
             		 +" (Taille actuelle : " +humanReadableByteCountSI(sizeInBytes)+")"     
-             		+ "<BR><B>votre  inscription n'a pas été pris en compte<B>"); 
+             		+ "<BR><B>votre  inscription n'a pas ï¿½tï¿½ pris en compte<B>"); 
              out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
              out.println("<label>");
              out.println("<p>");
@@ -179,13 +179,13 @@ public class UploadServletRemplace extends UploadServlet {
         }
         
         
-        //Si taille < 1mo : Inscription refusé 
+        //Si taille < 1mo : Inscription refusï¿½ 
         if ( sizeInBytes>maxFileSizeAVM  ) {            	
              out.println("<br><br><p>");
              out.println("<label class=''>"); 
-             out.println("la taille du fichier image doit etre inférieure à 5 Mo !! "
+             out.println("la taille du fichier image doit etre infï¿½rieure ï¿½ 5 Mo !! "
             		 +" (Taille actuelle : " +humanReadableByteCountSI(sizeInBytes)+")"               		 
-             		+ "<BR><B>votre  inscription n'a pas été pris en compte<B>"); 
+             		+ "<BR><B>votre  inscription n'a pas ï¿½tï¿½ pris en compte<B>"); 
              out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
              out.println("<label>");
              out.println("<p>");
@@ -220,7 +220,7 @@ public class UploadServletRemplace extends UploadServlet {
 	        	//identifiant innexistant
 	        	  out.println("<br><br><p>");
 	              out.println("<label class=''>"); 
-	              out.println("Identifiant non trouvé : <B>"+paramOldIdPost+"<B>"); 
+	              out.println("Identifiant non trouvï¿½ : <B>"+paramOldIdPost+"<B>"); 
 	              out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
 	              out.println("<label>");
 	              out.println("<p>");
@@ -230,7 +230,7 @@ public class UploadServletRemplace extends UploadServlet {
 	        }
 			
     		/*
-	        System.out.println("API Goole Mise a jour OK, deplacement du fichier serialisé Backup");
+	        System.out.println("API Goole Mise a jour OK, deplacement du fichier serialisï¿½ Backup");
     		File file = new File("data/new/"+nomFichierSerialise);
     		file.renameTo(new File("data/ok/"+nomFichierSerialise));
     		*/
@@ -244,8 +244,8 @@ public class UploadServletRemplace extends UploadServlet {
 		
         out.println("<p>");
         out.println("<label class='label' >Nouvel image : "+sUrlFichierImage+"</label><br>");
-        out.println("<label class='label' >Votre moifcation inscription a été prise en compte</label><br>");
-        out.println("<label class='label' >N° d'inscription : "+paramOldIdPost+"</label><br>");            
+        out.println("<label class='label' >Votre moifcation inscription a ï¿½tï¿½ prise en compte</label><br>");
+        out.println("<label class='label' >Nï¿½ d'inscription : "+paramOldIdPost+"</label><br>");            
         out.println("</p>");
         
         
@@ -274,7 +274,7 @@ public class UploadServletRemplace extends UploadServlet {
 		out.println("<img src=banniereSAVM.jpg width=600px align=hcenter>");
 		out.println("<br><br><p>");
 		out.println("<label class=''>"); 
-		out.println("la taille du fichier image doit etre inférieure à 5 Mo ! <BR><B>votre  inscription n'a pas été pris en compte<B>"); 
+		out.println("la taille du fichier image doit etre infï¿½rieure ï¿½ 5 Mo ! <BR><B>votre  inscription n'a pas ï¿½tï¿½ pris en compte<B>"); 
 		out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
 		out.println("<label>");
 		out.println("<p>");
