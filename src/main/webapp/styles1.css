@@ -144,6 +144,7 @@ input[type=submit]:hover {
 .contain_Who_check{
     display: flex;
     align-items: center;
+    flex-direction: row; gap: 16px; width: 50vw;
 }
 
 .center {
@@ -860,16 +861,21 @@ input:required:valid {
 
    @media (max-width: 600px) {
     body{
-        font-size: 2rem;
+        font-size: 1rem;
+    }
+    h2{
+      font-size: 2.5rem;
     }
     .sous_text{
-        font-size: 1.5rem;
+        font-size: 1rem;
+    }
+    .label p{
+      font-size: 0.875rem;
     }
     main{
         flex-direction: column;
         margin-top: 5vh;
         justify-content: start;
-        
     }
     .container_left{
         width: 100%;
@@ -877,6 +883,12 @@ input:required:valid {
         position: relative;
         top: 0;
         margin-bottom: 64px;
+    }
+    .radio-input label:has(input:checked)::before{
+      width: 38vw;
+    }
+    .radio-input label{
+      width: 38vw;
     }
     fieldset{
         width: 80vw;
@@ -888,17 +900,17 @@ input:required:valid {
         width: 80vw;
     }
     .Input_style input{
-        width: 39.3vw;
+        width: 79.5vw;
     }
     .Input_style2 input{
-        width: 25.3vw;
+        width: 38vw;
     }
     .boton-elegante{
-        font-size: 2rem;
+        font-size: 1rem;
     }
     .boton-previous{
-        font-size: 2rem;
-    }
+      font-size: 1rem;
+  }
     textarea{
         width: 79.5vw;
     }
@@ -907,6 +919,22 @@ input:required:valid {
     }
     #OEUVRE_TITRE_2{
         width: 79.5vw;
+    }
+    .Input_style select{
+      padding: 1em;
+    }
+    .contain_Who {
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+    }
+    .contain_Who_check {
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+    }
+    .tab{
+      padding: 8px 24px !important;
     }
    }
 

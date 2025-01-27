@@ -2,9 +2,12 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INSCRIPTION SALON SAVM 2023</title>
     <link rel="stylesheet" href="styles1.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poly:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head> 
 
 <body>
@@ -133,7 +136,7 @@
                             </div>
                         </div>
                         
-                        <div class="contain_Who_check slide-right" style="display: flex; flex-direction: row; gap: 16px; width: 50vw;">
+                        <div class="contain_Who_check slide-right" style="">
                             
                                                         
                             <div class="Input_style slide-right">
@@ -185,8 +188,8 @@
                         <div>
                             <p style="margin-top: 24px;">Vous pouvez ajouter deux oeuvres maximum.</p>
                             <div class="tabs tab-container">
-                                <div class="tab active" onclick="switchTab(0)" >Oeuvre 1</div>
-                                <div id="oeuvre2_simple"  onclick="switchTab(1)" class="tab" >Oeuvre 2</div>                                
+                                <div class="tab active" onclick="switchTab(0)" ><p>Oeuvre 1</p></div>
+                                <div id="oeuvre2_simple"  onclick="switchTab(1)" class="tab" ><p>Oeuvre 2</p></div>                                
                                 <!--  -->
                             </div>
                         </div>
@@ -196,7 +199,7 @@
                                 <label class="label" for="Titre">Titre de l'oeuvre<span class="obligatoire">*</span></label>
                             </div>
                             <div class="contain_Who slide-right">
-                                <p>Type d'oeuvre</p><span class="obligatoire">*</span>
+                                <p>Type d'oeuvre<span class="obligatoire">*</span></p>
                                 <div class="Input_style slide-right">
                                     <label for="selectniveau" class="label"></label>
                                     <select id="selectniveau" name="OEUVRE_TYPE" required>
@@ -288,7 +291,7 @@
                                 <label class="label" for="Titre_2">Titre de la seconde oeuvre<span class="obligatoire">*</span></label>
                             </div>
                             <div class="contain_Who slide-right">
-                                <p>Type d'oeuvre</p><span class="obligatoire">*</span>
+                                <p>Type d'oeuvre<span class="obligatoire">*</span></p>
                                 <div class="Input_style slide-right">
                                     <label for="selectniveau_2" class="label"></label>
                                     <select id="selectniveau_2" name="OEUVRE_TYPE_2">
@@ -417,7 +420,7 @@
                                             <p>Oui</p>
                                         </label>
                                         <label for="ms">
-                                            <input type="radio" value="non" id="ms1" name="ADAGP" checked/>
+                                            <input type="radio" value="non" id="ms1" name="ADAGP"/>
                                             <p>Non</p>  
                                         </label>
                                     </div>
