@@ -76,7 +76,7 @@ legend {
 
 }
 fieldset {
-    border: solid 1px #fff;
+    border: solid 1px #efefef;
     display: flex;
     flex-direction: column;
     align-items: start;
