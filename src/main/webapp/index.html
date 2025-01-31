@@ -16,7 +16,7 @@
             <div class="img-container"> <!-- Block parent element -->
                 <!-- <img src=banniereSAVM.jpg> -->
                  <img src="Logo_Savm.png" style="width: 7vw;">
-                <H2>INSCRIPTION SALON SAVM 2024</H2>
+                <H2>INSCRIPTION SALON SAVM 2025</H2>
                 <label for="md">Exposition du 28 septembre au 20 octobre  2024 à 17h</label><BR><br>
                 <p class="sous_text">Toutes ces informations sont récoltées par la Société du salon des artistes du val de marne en toute sécurité. Toutes informations nécéssaires à l'inscription d'une ou plusieurs oeuvres, resterons privées.</p>
             </div>
@@ -65,12 +65,15 @@
                                 <div>
                                     <p style="margin-top: 16px;" class="slide-right">Identité<span class="obligatoire">*</span></p>
                                     <div class="contain_Who slide-right">
-                                        <div class="Input_style slide-right" style="margin-bottom: 4px;">
-                                            <input type="text" id="contact_nom" name="NOM" required>
-                                            <label class="label" for="contact_nom">Nom / Pseudo<span class="obligatoire">*</span></label>
+                                        <div class="Input_style2 slide-right" style="margin-bottom: 4px;">
+                                            <input type="text" id="contact_nom_artiste" name="NOM" required>
+                                            <label class="label" for="contact_nom_artiste">Nom d'artiste<span class="obligatoire">*</span></label>
                                         </div>
-                                        
-                                        <div class="Input_style slide-right" style="margin-bottom: 4px;">
+                                        <div class="Input_style2 slide-right" style="margin-bottom: 4px;">
+                                            <input type="text" id="contact_nom" name="NOM" required>
+                                            <label class="label" for="contact_nom">Nom<span class="obligatoire">*</span></label>
+                                        </div>
+                                        <div class="Input_style2 slide-right" style="margin-bottom: 4px;">
                                             <input type="text" id="contact_prenom" name="PRENOM" required>
                                             <label class="label" for="contact_prenom">Prénom</label>
                                         </div>
@@ -99,7 +102,7 @@
                                 <!----> 
                                 <div class="Input_style slide-right">
                                     
-                                    <input type="text" name="TEL" required>
+                                    <input type="text" name="TEL"  maxlength="10" required>
                                     <label class="label" for="email">Tel<span class="obligatoire">*</span></label>
                                 </div>
                             </div>
@@ -214,11 +217,11 @@
                             </div>
                             
                                 <div class="Input_style slide-right">
-                                    <textarea id="OEUVRE_DETAIL" rows="5" cols="60" placeholder="Description de l'oeuvre (5 lignes max)"  name="OEUVRE_DETAIL" maxlength = "300"></textarea>
+                                    <textarea id="OEUVRE_DETAIL" rows="5" cols="60"  name="OEUVRE_DETAIL" maxlength = "300"></textarea>
                                     <label class="label" for="rue">Décrire son oeuvre </label>
                                 </div>
                                 <div class="Input_style slide-right">
-                                    <textarea id="OEUVRE_DETAIL_EXPO" rows="3" cols="60" placeholder="Remarques particulières  (3 lignes max)"  name="OEUVRE_DETAIL_EXPO" maxlength = "180"></textarea>
+                                    <textarea id="OEUVRE_DETAIL_EXPO" rows="3" cols="60"  name="OEUVRE_DETAIL_EXPO" maxlength = "180"></textarea>
                                     <label  for="rue">Remarques particulières à l'exposition de l'œuvre  </label> 
                                 </div>
                             <div>
@@ -306,11 +309,11 @@
                             </div>
                             
                                 <div class="Input_style slide-right">
-                                    <textarea id="OEUVRE_DETAIL_2" rows="5" cols="60" placeholder="Description de la seconde oeuvre (5 lignes max)"  name="OEUVRE_DETAIL_2" maxlength = "300"></textarea>
+                                    <textarea id="OEUVRE_DETAIL_2" rows="5" cols="60"  name="OEUVRE_DETAIL_2" maxlength = "300"></textarea>
                                     <label class="label" for="rue_2">Décrire son oeuvre</label>
                                 </div>
                                 <div class="Input_style slide-right">
-                                    <textarea id="OEUVRE_DETAIL_EXPO_2" rows="3" cols="60" placeholder="Remarques particulières  (3 lignes max)"  name="OEUVRE_DETAIL_EXPO_2" maxlength = "180"></textarea>
+                                    <textarea id="OEUVRE_DETAIL_EXPO_2" rows="3" cols="60"  name="OEUVRE_DETAIL_EXPO_2" maxlength = "180"></textarea>
                                     <label  for="rue_2">Remarques particulières à l'exposition de l'œuvre  </label> 
                                 </div>
                             <div>
@@ -412,6 +415,17 @@
                                 <input id="site" type="text" maxlength="14" size="14" placeholder="siret (14 Chifres)" pattern="[0-9]{14}" title="Dimensions" name="SIRET_MDA" >
                                 <label class="label" for="siret">Numéro de siret</label>
                             </div>
+                            <div class="radio-input slide-right" style="gap: 16px;">
+                                <label for="md">
+                                    <input type="radio" value="oui" id="md1" name="ADAGP"  required="required"/>
+                                    <p>Oui</p>
+                                </label>
+                                <label for="ms">
+                                    <input type="radio" value="non" id="ms1" name="ADAGP"  required="required">
+                                    <p>Non</p>  
+                                </label>
+                            </div>   
+                            <!-- </div>
                             <div style="display: flex; flex-direction: column; ">
                                 <p>ADAGP</p>
                                     <div class="radio-input slide-right">
@@ -424,7 +438,7 @@
                                             <p>Non</p>  
                                         </label>
                                     </div>
-                            </div>    
+                            </div>     -->
                             <!-- <div class="contain_Who_check">ADAGP
                                 <input type="radio" value="oui" id="md1" name="ADAGP" >
                                 <label for="md">oui</label>
@@ -437,6 +451,7 @@
                             <input id="site" type="text" maxlength="50" size="40"  title="Dimensions" NAME="SITE_INTERNET">
                             <label class="label" for="site">www.VotreSite.fr</label>
                         </div>
+                        <p class="sous_text">Cette adresse web pourra être utilisée par Le SAVM sous forme de QR Code.</p>
                         <div class="Input_style slide-right">
                             <textarea id="comment" name=REMARQUES rows="5" cols="60" placeholder="Un mini CV (5 lignes max)"  maxlength = "300" ></textarea>
                             <label class="label" for="site">Un mini CV (5 lignes max)</label>
