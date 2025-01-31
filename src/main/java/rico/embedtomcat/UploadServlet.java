@@ -45,9 +45,8 @@ public class UploadServlet extends HttpServlet {
 	    protected void doGet(HttpServletRequest request, HttpServletResponse resp)
 	            throws ServletException, IOException {  
 		 
-		 throw new ServletException("GET method used with " +
-		            getClass( ).getName( )+": POST method required.");
-	 
+		 //throw new ServletException("GET method used with " +getClass( ).getName( )+": POST method required.");
+		System.out.println("DoGet : non utilisé");
 	 }
 	 
 	 
@@ -212,6 +211,7 @@ public class UploadServlet extends HttpServlet {
             String DIMENSIONZ_2="0";
             String paramNom="";
             String paramPrenom="";
+			String paramNomArtiste="";
             System.out.println("UploadServlet doPost avant parcour des ficheirs");
             while ( i.hasNext () ) {
                
@@ -320,6 +320,11 @@ public class UploadServlet extends HttpServlet {
                 	   value=value.toUpperCase();
                 	   paramNom=value;
                    }
+
+				   if (name.equals("NOM_ARTISTE")) {                	   
+						value=value.toUpperCase();
+						paramNomArtiste=value;
+					}
                    if (name.equals("PRENOM")) {
                 	   if ((value==null) || "".equals(value))   {
                 		   value="";
@@ -372,9 +377,9 @@ public class UploadServlet extends HttpServlet {
             if ( sizeInBytes>maxFileSizeAVM  ) {            	
                  out.println("<br><br><p>");
                  out.println("<label class=''>"); 
-                 out.println("la taille du fichier image doit etre inf�rieure � 5 Mo !! "
+                 out.println("la taille du fichier image doit etre inférieure à 5 Mo !! "
                 		 +" (Taille actuelle : " +humanReadableByteCountSI(sizeInBytes)+")"               		 
-                 		+ "<BR><B>votre  inscription n'a pas �t� pris en compte<B>"); 
+                 		+ "<BR><B>votre  inscription n'a pas été pris en compte<B>"); 
                  out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
                  out.println("<label>");
                  out.println("<p>");
@@ -386,8 +391,8 @@ public class UploadServlet extends HttpServlet {
             
             out.println("<p>");
             out.println("<label class='label' >"+paramPrenom +" "+ paramNom+"</label><br>");
-            out.println("<label class='label' >Votre inscription a �t� prise en compte</label><br>");
-            out.println("<label class='label' >N� d'inscription : "+idPost+"</label><br>");            
+            out.println("<label class='label' >Votre inscription a été prise en compte</label><br>");
+            out.println("<label class='label' >N d'inscription : "+idPost+"</label><br>");            
             out.println("</p>");
             
             
@@ -436,7 +441,7 @@ public class UploadServlet extends HttpServlet {
             //Version 2024
             OrdreColonne = "CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,PHOTO,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP";
             //version 2025
-            OrdreColonne = "CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,PHOTO,OEUVRE_TYPE_2,OEUVRE_TITRE_2,OEUVRE_DETAIL_2,OEUVRE_DIM_2,OEUVRE_PRIX_2,PHOTO_2,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP";
+            OrdreColonne = "CIVIL,NOM,PRENOM,NOM_ARTISTE,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,PHOTO,OEUVRE_TYPE_2,OEUVRE_TITRE_2,OEUVRE_DETAIL_2,OEUVRE_DIM_2,OEUVRE_PRIX_2,PHOTO_2,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP";
             _SheetSAVM.initOdreChamps(OrdreColonne);			
     		_SheetSAVM.listeDepart =  new ArrayList<Object>(llRow);
     		_SheetSAVM.creteListeShhet();
@@ -498,7 +503,7 @@ public class UploadServlet extends HttpServlet {
 			out.println("<img src=banniereSAVM.jpg width=600px align=hcenter>");
 			out.println("<br><br><p>");
 			out.println("<label class=''>"); 
-			out.println("la taille du fichier image doit etre inf�rieure � 5 Mo ! <BR><B>votre  inscription n'a pas �t� pris en compte<B>"); 
+			out.println("la taille du fichier image doit etre inférieure à 5 Mo ! <BR><B>votre  inscription n'a pas été pris en compte<B>"); 
 			out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
 			out.println("<label>");
 			out.println("<p>");
