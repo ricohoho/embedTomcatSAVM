@@ -27,12 +27,17 @@ public class Main {
             webPort = "8080";
         }
  
+        System.out.println("--> webPort="+webPort);
         tomcat.setPort(Integer.valueOf(webPort));
 
-        StandardContext ctx = (StandardContext) tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
+        StandardContext ctx = (StandardContext) tomcat.addWebapp("", new File(webappDirLocation).getAbsolutePath());
         System.out.println("configuring app with basedir: " + new File("./" + webappDirLocation).getAbsolutePath());
         
         
+
+        // Ajouter le contexte de l'application web avec un chemin contextuel vide
+        //Context context = tomcat.addWebapp("", new File(webappDirLocation).getAbsolutePath());
+
         //ctx.getServletContext().getServletRegistrations().get("webdavservlet").setInitParameter("file-upload", "c:\\tempo\\");
         //ctx.getServletContext().setInitParameter("file-upload", "c:\\tempo\\");
         //filePath = getServletContext().getInitParameter("file-upload"); 
@@ -45,7 +50,10 @@ public class Main {
                 additionWebInfClasses.getAbsolutePath(), "/"));
         ctx.setResources(resources);
         
+        System.out.println("-->tomcat.start");
         tomcat.start();
+        System.out.println("-->getServer().await");
         tomcat.getServer().await();
+        System.out.println("-->Fin initalisation");
     }
 }
