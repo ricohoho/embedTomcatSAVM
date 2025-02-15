@@ -26,6 +26,7 @@ document.getElementById('buton_add').addEventListener('click', function(event) {
     document.getElementById('DIMENSIONY_2').required = true;
     document.getElementById('DimensionX_2').required = true;
     document.getElementById('prix_2').required = true;
+    document.getElementById('file_2').required = true;
 
     nb_oeuvre =2;
     switchTab(1);
@@ -39,6 +40,7 @@ document.getElementById('buton_suppr').addEventListener('click', function(event)
     document.getElementById('DIMENSIONY_2').required = false;
     document.getElementById('DimensionX_2').required = false;
     document.getElementById('prix_2').required = false;
+    document.getElementById('file_2').required = false;
 
     nb_oeuvre =1;
     console.log(nb_oeuvre);
@@ -55,9 +57,33 @@ document.getElementById('buton_suppr').addEventListener('click', function(event)
 
 document.getElementById('file').addEventListener('change', function(event) {
     const input = event.target;
-    const fileNameElement = document.getElementById('file-name');
-    
+    const fileNameElement = document.getElementById('file');
+  
     const file = event.target.files[0];
+
+    // Définir la taille maximale autorisée en octets (par exemple, 2 Mo)
+    const maxSize = 5 * 1024 * 1024; // 2 Mo
+    const minSize = 1 * 1024 * 1024; // 2 Mo
+
+    // Vérifier que le fichier est <5 mo et > 1 Mo
+    if (file) {
+        // Vérifier la taille du fichier
+        if (file.size > maxSize) {
+            alert("Le fichier est trop volumineux. Veuillez sélectionner un fichier de moins de 5 Mo.");
+            // Réinitialiser la sélection du fichier
+            fileNameElement.value = '';
+            return;
+        } else if (file.size < minSize) {
+            alert("Lefichier est trop petit. Veuillez sélectionner un fichier plus de 1 Mo.");
+            // Réinitialiser la sélection du fichier
+            fileNameElement.value = '';
+            return;
+        } else {
+            console.log("Fichier valide !");
+        }
+    }    
+
+    //preview : 
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -76,23 +102,36 @@ document.getElementById('file').addEventListener('change', function(event) {
     }
 });
 
-// resetButton.addEventListener('click', function() {
-//     const resetButton = document.getElementById('resetButton');
-//     const preview = document.getElementById('preview_2');
-//     const name = document.getElementById('file-name_2');
-//     const fileInput = document.getElementById('file_2');
-//     fileInput.value = '';
-//     name.value = "none";
-//     preview.src = '';
-//     preview.style.display = 'none';
-// });
+
 
 
 document.getElementById('file_2').addEventListener('change', function(event) {
     const input = event.target;
-    const fileNameElement = document.getElementById('file-name_2');
+    const fileNameElement = document.getElementById('file_2');
+
+    // Définir la taille maximale autorisée en octets 
+    const maxSize = 5 * 1024 * 1024; // 2 Mo
+    const minSize = 1 * 1024 * 1024; // 2 Mo
 
     const file = event.target.files[0];
+
+    // Vérifier que le fichier est <5 mo et > 1 Mo
+    if (file) {
+      if (file.size > maxSize) {
+          alert("Le fichier est trop volumineux. Veuillez sélectionner un fichier de moins de 5 Mo.");
+          // Réinitialiser la sélection du fichier
+          fileNameElement.value = '';
+          return;
+      } else if (file.size < minSize) {
+          alert("Lefichier est trop petit. Veuillez sélectionner un fichier plus de 1 Mo.");
+          // Réinitialiser la sélection du fichier
+          fileNameElement.value = '';
+          return;
+      } else {
+          console.log("Fichier valide !");
+      }
+    }    
+    //preview
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -131,9 +170,29 @@ function checkRequired(divName)  {
                 if (!field.value.trim()) {
                     console.log(field.name+" : vide")
                     field.classList.add('error-border');
+
+                    //traitemnt du file
+                    if (field.name=="file" ) {
+                      document.getElementById('div_file').classList.add('error-border');
+                    }
+
+                    if (field.name=="file_2" ) {
+                      document.getElementById('div_file_2').classList.add('error-border');
+                    }
+
                     formValid = field.name;
                 } else {
                     field.classList.remove('error-border');
+                    //Traitement du champs particulier FICHEIR
+                     //traitemnt du file
+                     if (field.name=="file" ) {
+                      document.getElementById('div_file').classList.remove('error-border');
+                    }
+
+                    if (field.name=="file_2" ) {
+                      document.getElementById('div_file_2').classList.remove('error-border');
+                    }
+
                 }
             });
             if (formValid=='') {
@@ -152,8 +211,9 @@ function checkRequired(divName)  {
     $(".next-step").click(function() {
       let champsRequired = checkRequired("step-"+currentStep);
       console.log('champsRequired='+champsRequired)
+      console.log('champsRequired ['+champsRequired+']');
       if (currentStep < 4 & champsRequired=='' ) {
-            
+           console.log('cas 1');
             $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
             currentStep++;
             setTimeout(function() {
@@ -163,10 +223,13 @@ function checkRequired(divName)  {
             updateProgressBar();
             }, 500);
       } else  {
+        console.log('cas 2');
         if (champsRequired.endsWith("_2")) {
             //La chaîne se termine par '_2'
             switchTab(1);
         } else {
+            console.log('cas 3 : Erreur');
+
             //La chaîne ne se termine pas par '_2'
         }
       }

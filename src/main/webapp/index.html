@@ -22,7 +22,7 @@
                 <p class="sous_text">Toutes ces informations sont récoltées par la Société du salon des artistes du val de marne en toute sécurité. Toutes informations nécéssaires à l'inscription d'une ou plusieurs oeuvres, resterons privées.</p>
             </div>
             <div>
-                <p class="sous_text" style="margin-top: auto;">Créer par Le salon des artistes du val de marne</p>
+                <p class="sous_text" style="margin-top: auto;">Créer par Le salon des artistes du val de marne V2.0</p>
             </div>
         </div>
         <div class="container_right">
@@ -156,7 +156,10 @@
                             </div> -->
 
                             <div class="Input_style2 slide-right">
-                                <input id="cp" type="text" maxlength="5" name="ADR_CODE_POSTAL" size="10" pattern="[0-9]{5}" title="nombre à 5 chiffres" required>
+                                <!--
+                                <input id="cp" type="text" maxlength="5" name="ADR_CODE_POSTAL" size="10" pattern="\d{5}" title="nombre à 5 chiffres" required>
+                                -->
+                                <input id="cp" type="text" maxlength="5" name="ADR_CODE_POSTAL" size="10" title="nombre à 5 chiffres" required>
                                 <label class="label" for="cp">Code postal<span class="obligatoire">*</span></label>                
                             </div>
                         </div>
@@ -229,15 +232,15 @@
                                 <p>Dimension de l'oeuvre (cm)</p>
                                 <div class="contain_Who slide-right">
                                     <div class="Input_style2">
-                                        <input  type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions" name=DIMENSIONY required>
+                                        <input  type="number" maxlength="4" size="4" step="1"  onkeyup="this.value = Math.round(this.value);"  pattern="[0-9]*" title="Dimensions" name=DIMENSIONY required>
                                         <label class="Dimensions" for="Dimensions">x Hauteur : <span class="obligatoire">*</span></label>
                                     </div>
                                     <div class="Input_style2 slide-right">
-                                        <input id="Dimensions" type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions"  name=DIMENSIONX required>
+                                        <input id="Dimensions" type="number" maxlength="4" size="4" onkeyup="this.value = Math.round(this.value);" pattern="[0-9]*" title="Dimensions"  name=DIMENSIONX required>
                                         <label class="Dimensions" for="Dimensions">x Largeur : <span class="obligatoire">*</span></label>                                        
                                     </div>
                                     <div class="Input_style2 slide-right">
-                                        <input id="Dimensions" type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions"  name=DIMENSIONZ >
+                                        <input id="Dimensions" type="number" maxlength="4" size="4" onkeyup="this.value = Math.round(this.value);" pattern="[0-9]*" title="Dimensions"  name=DIMENSIONZ >
                                         <label class="Dimensions" for="Dimensions">x Profondeur : </label>
                                     </div>    
                                 </div>
@@ -246,7 +249,7 @@
 
                             <!-- From Uiverse.io by Yaya12085 --> 
                             <div class="container_drop_file slide-right"> 
-                                <div class="header_drop_file"> 
+                                <div class="header_drop_file" id="div_file"> 
                                 <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -263,7 +266,7 @@
                                     <p id="file-name">Aucuns fichiers selectionnés</p> 
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z" stroke="#000000" stroke-width="2"></path> <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round"></path> <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z" stroke="#000000" stroke-width="2"></path> </g></svg>
                                 </label> 
-                                <input id="file" type="file" name="file"> 
+                                <input id="file" type="file" name="file" required> 
                             </div>
                             <!---->
 
@@ -321,15 +324,15 @@
                                 <p>Dimension de la seconde oeuvre (cm)</p>
                                 <div class="contain_Who slide-right">
                                     <div class="Input_style2">
-                                        <input id="DIMENSIONY_2" type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions_2" name=DIMENSIONY_2>
+                                        <input id="DIMENSIONY_2" type="number" maxlength="4" size="4" onkeyup="this.value = Math.round(this.value);" pattern="[0-9]*" title="Dimensions_2" name=DIMENSIONY_2>
                                         <label class="Dimensions" for="Dimensions_2">x Hauteur : <span class="obligatoire">*</span></label>
                                     </div>
                                     <div class="Input_style2 slide-right">
-                                        <input id="DimensionX_2" type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions_2"  name=DIMENSIONX_2>
+                                        <input id="DimensionX_2" type="number" maxlength="4" size="4" onkeyup="this.value = Math.round(this.value);" pattern="[0-9]*" title="Dimensions_2"  name=DIMENSIONX_2>
                                         <label class="Dimensions" for="Dimensions_2">x Largeur : <span class="obligatoire">*</span></label>                                        
                                     </div>
                                     <div class="Input_style2 slide-right">
-                                        <input id="DimensionZ_2" type="number" maxlength="4" size="4" pattern="[0-9]*" title="Dimensions_2"  name=DIMENSIONZ_2 >
+                                        <input id="DimensionZ_2" type="number" maxlength="4" size="4" onkeyup="this.value = Math.round(this.value);" pattern="[0-9]*" title="Dimensions_2"  name=DIMENSIONZ_2 >
                                         <label class="Dimensions" for="Dimensions_2">x Profondeur : </label>
                                     </div>    
                                 </div>
@@ -338,7 +341,7 @@
 
                             <!-- From Uiverse.io by Yaya12085 --> 
                             <div class="container_drop_file slide-right"> 
-                                <div class="header_drop_file"> 
+                                <div class="header_drop_file" id="div_file_2"> 
                                 <!-- <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -355,7 +358,7 @@
                                     <p id="file-name_2">Aucuns fichiers selectionnés</p> 
                                     <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.16565 10.1534C5.07629 8.99181 5.99473 8 7.15975 8H16.8402C18.0053 8 18.9237 8.9918 18.8344 10.1534L18.142 19.1534C18.0619 20.1954 17.193 21 16.1479 21H7.85206C6.80699 21 5.93811 20.1954 5.85795 19.1534L5.16565 10.1534Z" stroke="#000000" stroke-width="2"></path> <path d="M19.5 5H4.5" stroke="#000000" stroke-width="2" stroke-linecap="round"></path> <path d="M10 3C10 2.44772 10.4477 2 11 2H13C13.5523 2 14 2.44772 14 3V5H10V3Z" stroke="#000000" stroke-width="2"></path> </g></svg>
                                 </label> 
-                                <input id="file_2" type="file" name="file_2" style="display: none;"> 
+                                <input id="file_2" type="file" name="file_2" style="display: none;" > 
                             </div>
                             <!---->
 
@@ -411,10 +414,10 @@
 
                     <div class="mb-3">
                         <div>
-                            <p style="margin-top: 16px;" class="slide-right">N° de SIRET</p>
+                            <p style="margin-top: 16px;" class="slide-right">Ref MDA / Siret</p>
                             <div class="Input_style slide-right">
                                 <input id="site" type="text" size="14" placeholder="siret (14 Chifres)" title="Dimensions" name="SIRET_MDA" >
-                                <label class="label" for="siret">Numéro de siret</label>
+                                <label class="label" for="siret">MDA / Siret</label>
                             </div>
                             <p>ADAGP</p>
                             <div class="radio-input slide-right" style="gap: 16px;">
@@ -445,7 +448,7 @@
                             </div>
                             <p class="sous_text">Cette adresse web pourra être utilisée par Le SAVM sous forme de QR Code.</p>
                             <div class="Input_style slide-right">
-                                <textarea id="comment" name=REMARQUES rows="5" cols="60"  maxlength = "300" ></textarea>
+                                <textarea id="comment" name=REMARQUES rows="5" cols="60"  maxlength = "3000" ></textarea>
                                 <label class="label" for="site">Un mini CV</label>
                             </div>
                         </div>

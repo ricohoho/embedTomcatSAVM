@@ -190,7 +190,7 @@ public class UploadServlet extends HttpServlet {
 
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>INSCRIPTION SALON SAVM 2024 - Merci</title>");  
+            out.println("<title>INSCRIPTION SALON SAVM 2025 - Merci</title>");  
             out.println("<link rel='stylesheet' href='styles1.css'>");
             out.println("</head>");
             out.println("<body>");
@@ -361,9 +361,9 @@ public class UploadServlet extends HttpServlet {
             if ( sizeInBytes<minFileSize  ) {            	
                  out.println("<br><br><p>");
                  out.println("<label class=''>"); 
-                 out.println("Votre image n'a pas une d�finition suffisante (la taille du fichier image doit etre sup�rieure � 1 Mo), "
+                 out.println("Votre image n a pas une definition suffisante (la taille du fichier image doit etre superieure a 1 Mo), "
                 		 +" (Taille actuelle : " +humanReadableByteCountSI(sizeInBytes)+")"     
-                 		+ "<BR><B>votre  inscription n'a pas �t� pris en compte<B>"); 
+                 		+ "<BR><B>votre  inscription n a pas ete pris en compte<B>"); 
                  out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
                  out.println("<label>");
                  out.println("<p>");
@@ -377,9 +377,9 @@ public class UploadServlet extends HttpServlet {
             if ( sizeInBytes>maxFileSizeAVM  ) {            	
                  out.println("<br><br><p>");
                  out.println("<label class=''>"); 
-                 out.println("la taille du fichier image doit etre inférieure à 5 Mo !! "
+                 out.println("la taille du fichier image doit etre inferieure a 5 Mo !! "
                 		 +" (Taille actuelle : " +humanReadableByteCountSI(sizeInBytes)+")"               		 
-                 		+ "<BR><B>votre  inscription n'a pas été pris en compte<B>"); 
+                 		+ "<BR><B>votre  inscription n a pas ete pris en compte<B>"); 
                  out.println("<BR><BR><A href='#'  onClick='history.go(-1)' >Retour au formulaire</A>");
                  out.println("<label>");
                  out.println("<p>");
@@ -391,8 +391,8 @@ public class UploadServlet extends HttpServlet {
             
             out.println("<p>");
             out.println("<label class='label' >"+paramPrenom +" "+ paramNom+"</label><br>");
-            out.println("<label class='label' >Votre inscription a été prise en compte</label><br>");
-            out.println("<label class='label' >N d'inscription : "+idPost+"</label><br>");            
+            out.println("<label class='label' >Votre inscription a ete prise en compte</label><br>");
+            out.println("<label class='label' >N inscription : "+idPost+"</label><br>");            
             out.println("</p>");
             
             
@@ -403,7 +403,7 @@ public class UploadServlet extends HttpServlet {
             
  
              
-            out.println("</div>");//Pour centrer
+            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
             
@@ -437,11 +437,9 @@ public class UploadServlet extends HttpServlet {
           //=========== transformation liste paramX=valueX,ParamY=ValueY,... en value1,value2,... tri� dans l'odre de la sheet
             System.out.println("UploadServlet doPost append ligne dans Google Sheet");
             SheetSAVM _SheetSAVM = new SheetSAVM();
-            String OrdreColonne;
-            //Version 2024
-            OrdreColonne = "CIVIL,NOM,PRENOM,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,PHOTO,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP";
+            String OrdreColonne;                        
             //version 2025
-            OrdreColonne = "CIVIL,NOM,PRENOM,NOM_ARTISTE,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DIM,OEUVRE_PRIX,PHOTO,OEUVRE_TYPE_2,OEUVRE_TITRE_2,OEUVRE_DETAIL_2,OEUVRE_DIM_2,OEUVRE_PRIX_2,PHOTO_2,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,DATE,STATUT,CHEQUE,REMARQUES,OEUVRE_DETAIL_EXPO,ADAGP";
+            OrdreColonne = "CIVIL,NOM,PRENOM,NOM_ARTISTE,ADR_NUM,ADR_RUE,ADR_CODE_POSTAL,ADR_VILLE,TEL,EMAIL,OEUVRE_TYPE,OEUVRE_TITRE,OEUVRE_DETAIL,OEUVRE_DETAIL_EXPO,OEUVRE_DIM,OEUVRE_PRIX,PHOTO,OEUVRE_TYPE_2,OEUVRE_TITRE_2,OEUVRE_DETAIL_2,OEUVRE_DETAIL_EXPO_2,OEUVRE_DIM_2,OEUVRE_PRIX_2,PHOTO_2,SIRET_MDA,DISPO_GARDE,SITE_INTERNET,DATE,STATUT,CHEQUE,REMARQUES,ADAGP";
             _SheetSAVM.initOdreChamps(OrdreColonne);			
     		_SheetSAVM.listeDepart =  new ArrayList<Object>(llRow);
     		_SheetSAVM.creteListeShhet();
